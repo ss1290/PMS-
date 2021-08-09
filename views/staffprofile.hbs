@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<head>
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/stylesheet/staff.css">
+    <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+<body>
+    <div class="heading1">
+        <h1 style="font-size:35px"><span class="glyphicon glyphicon-plus"
+                style="font-size:50px;color:rgb(142, 142, 179);border-style:solid;border-radius:100%;padding:10px;border-width:3px;font-size:30px;"></span>&nbsp;PMS
+        </h1>
+        <button class="logoutButton" onclick="logout()"><span class="fas fa-power-off"></span>&ensp;Logout</button>
+    </div>
+    <h1 class="heading2" id="heading2">My Profile</h1>
+    <div class="navigationbar">
+        <button class="dashboard1" onclick="dboard1()"><span><input type=image class="dashboardimage"
+                    src="/img/dashboard.png"></span></span>&nbsp;Dashboard</button>
+        <br>
+        <button class="patient1" onclick="showPatient()"><span><input type=image class="patientimage"
+                    src="/img/patient.png"></span>&emsp;Patient</button>
+        <br>
+        <button class="profile1" onclick="showProfile()"><span><input type=image class="profileimage"
+                    src="/img/profile.png"></span>&emsp;Profile</button>
+    </div>
+    <div id="profile1" class="showstaff">
+        <div class="profilebar">
+            <input type=image class="feed1" src="/img/feed.png">
+            <p class="Dlist2">Manage Profile</p>
+        </div>
+        <form id="staffProfile" class="profile">
+            <label>Name</label>
+            <input type="text" id="editstaffName" value="{{name}}" required>
+            <br>
+            <label>Email</label>
+            <input type="text" id="editstaffEmail" value="{{email}}" required>
+            <br>
+            <label>Address</label>
+            <input type="text" id="editstaffAddress" value="{{address}}" required>
+            <br>
+            <label>Phone No</label>
+            <input type="text" id="editstaffPhoneNo" value="{{phoneNumber}}" required>
+            <br>
+            <label>Password</label>
+            <input type="text" id="editstaffPassword" required>
+            <br>
+            <label>New Password</label>
+            <input type="text" id="editstaffNewPassword">
+            <br>
+            <label>Confirm Password</label>
+            <input type="text" id="editstaffConfirmPassword">
+            <br>
+            <button class="update1">Update</button>
+        </form>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/qs/6.6.0/qs.min.js"></script>
+        <script>
+            function showProfile() {
+                var { token } = Qs.parse(location.search, { ignoreQueryPrefix: true })
+                location.href = `/profile?&token=${token}`
+            }
+        </script>
+        <script>
+            function dboard1() {
+                    var { token } = Qs.parse(location.search, { ignoreQueryPrefix: true })
+                    location.href = `/dashboard/staff?&token=${token}`
+                }
+        </script>
+        <script>
+            function showPatient() {
+                var {token} = Qs.parse(location.search, { ignoreQueryPrefix: true })
+                location.href = `/patientshow?&token=${token}`
+            }
+        </script>
+        <script src="/js/staffprofile.js"></script>
+        <script src="/js/logout.js"></script>
+    </div>
+</body>

@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/stylesheet/admin.css">
+    <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    </head>
+    <body>
+    <div class="heading1">
+        <h1 style="font-size:35px"><span class="glyphicon glyphicon-plus"
+                style="font-size:50px;color:rgb(142, 142, 179);border-style:solid;border-radius:100%;padding:10px;border-width:3px;font-size:30px;"></span>&nbsp;PMS
+        </h1>
+        <button class="logoutButton" onclick="logout()"><span class="fas fa-power-off"></span>&ensp;Logout</button>
+    </div>
+    <h1 class="heading2" id="heading2">Staff Details</h1>
+    <div class="navigationbar">
+        <button class="dashboard1" onclick="dboard1()"><span><input type=image class="dashboardimage"
+        src="/img/dashboard.png"></span></span>&nbsp;Dashboard</button>
+        <br>
+        <button class="doctor1" onclick="showDoctor()"><span><input type=image class="doctorimage"
+        src="/img/doctor.jpg"></span>&emsp;Doctor</button>
+        <br>
+        <button class="patient1" onclick="showPatient()"><span><input type=image class="patientimage"
+        src="/img/patient.png"></span>&emsp;Patient</button>
+        <br>
+        <button class="staff1" onclick="showStaff()"><span><input type=image class="staffimage" src="/img/staff.png"
+        </span>&emsp;Staff</button>
+        <br>
+        <button class="profile1" onclick="showProfile()"><span><input type=image class="profileimage"
+        src="/img/profile.png"></span>&emsp;Profile</button>
+    </div>
+    <div class="sbar1" id="sbar1">
+        <div class="staffBar1">
+            <input type=image class="feed1" src="/img/feed.png">
+            <button class="Slist1" onclick="viewStaff()">Staff List</button>
+            <button class="Sadd1" onclick="addStaff()">Add Staff</button>
+        </div>
+        <div class="searchbox1" id="searchbox2">
+            <span class="glyphicon glyphicon-search" style="position:absolute;margin-top:325px;margin-left:5px;"></span>
+            <input type="text" placeholder="search" id="staffsearch" style="padding-left:50px;">
+        </div>
+        <table class="stafflist" id="stafflist">
+            <thead>
+                <tr>
+                    <th>S.No.</th>
+                    <th>Staff Name</th>
+                    <th>Email</th>
+                    <th>Address</th>
+                    <th>Phone No.</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody id="list2"></tbody>
+        </table>
+        <button class="next" id="edit2" onclick="next()">next</button>
+        <div class="addStaff" id="addStaff" style="display:none">
+            <p class="add1">Add Staff</p>
+            <form id="StaffForm">
+                <label>Name</label>
+                <input type="text" id="staffName" required>
+                <br>
+                <label>Email</label>
+                <input type="text" id="staffEmail" required>
+                <br>
+                <label>Password</label>
+                <input type="text" id="staffPassword" required>
+                <br>
+                <label>Address</label>
+                <input type="text" id="staffAddress" required>
+                <br>
+                <label>Phone No</label>
+                <input type="text" id="staffPhoneNo" required>
+                <br>
+                <button class="addstaffbutton">Submit</button>
+            </form>
+        </div>
+    </div>
+    <p id="message" class="message1"></p>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qs/6.6.0/qs.min.js"></script>
+    <script>
+        function addStaff() {
+            document.getElementById('stafflist').style.display = "none"
+            document.getElementById('searchbox2').style.display = "none"
+            document.getElementById('addStaff').style.display = "block"
+            document.getElementById('edit2').style.display='none'
+        }
+    </script>
+    <script>
+        function viewStaff() {
+            document.getElementById('stafflist').style.display = ""
+            document.getElementById('searchbox2').style.display = ""
+            document.getElementById('addStaff').style.display = "none"
+            document.getElementById('edit2').style.display='none'
+        }
+    </script>
+    <script src="/js/staffsignup.js"></script>
+    <script src="/js/staffshow.js"></script>
+    <script>
+        function showDoctor() {
+            var {token} = Qs.parse(location.search, { ignoreQueryPrefix: true })
+            location.href = `/admin/doctor?&token=${token}&page=${0}`
+        }
+    </script>
+    <script>
+        function dboard1() {
+            var {token} = Qs.parse(location.search, { ignoreQueryPrefix: true })
+            location.href = `/dashboard/admin?&token=${token}`
+        }
+    </script>
+    <script>
+        function showStaff() {
+            var {token} = Qs.parse(location.search, { ignoreQueryPrefix: true })
+            location.href = `/admin/staff?&token=${token}&page=${0}`
+        }
+    </script>
+    
+    <script>
+        function showPatient() {
+            var {token} = Qs.parse(location.search, { ignoreQueryPrefix: true })
+            location.href = `/admin/patient?&token=${token}&page=${0}`
+        }
+    </script>
+    <script>
+        function showProfile() {
+            var {token} = Qs.parse(location.search, { ignoreQueryPrefix: true })
+            location.href = `/adminprofile?&token=${token}`
+        }
+    </script>
+    <script src="/js/logout.js"></script>
+    </body>
+</html>

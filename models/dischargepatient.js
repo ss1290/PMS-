@@ -1,0 +1,42 @@
+const mongoose=require('mongoose')
+const dischargeSchema=new mongoose.Schema({
+    name:{
+        type:String,
+        required:true,
+        trim:true
+    },
+    patientId:{
+        type:Number,
+        required:true
+    },
+    doctor:{
+        type:String,
+        required:true
+    },
+    department:{
+        type:String,
+        required:true
+    },
+    date:{
+        type:String,
+        required:true
+    },
+    patientWard:{
+        type:String,
+        required:true
+    },
+    patientBed:{
+        type:String,
+        required:true
+    },
+    bedDays:{
+        type:Number,
+        required:true
+    },
+    charges:{
+        type:Number,
+        required:true
+    }
+})
+const Discharge=mongoose.model('Discharge',dischargeSchema)
+module.exports=Discharge

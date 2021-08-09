@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+        <link rel="stylesheet" href="/stylesheet/admin.css">
+        <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    </head>
+    <body>
+        <div class="heading1">
+            <h1 style="font-size:35px"><span class="glyphicon glyphicon-plus"style="font-size:50px;color:rgb(142, 142, 179);border-style:solid;border-radius:100%;padding:10px;border-width:3px;font-size:30px;"></span>&nbsp;PMS</h1>
+            <button class="logoutButton" onclick="logout()"><span class="fas fa-power-off"></span>&ensp;Logout</button>
+            </div>
+        <h1 class="heading2" id="heading2">Admin Dashboard</h1>
+            <div class="navigationbar">
+                <button class="dashboard1" onclick="dboard1()"><span><input type=image class="dashboardimage" src="/img/dashboard.png"></span></span>&nbsp;Dashboard</button>
+                <br>
+                <button class="doctor1" onclick="showDoctor()"><span><input type=image class="doctorimage" src="/img/doctor.jpg"></span>&emsp;Doctor</button>
+                <br>
+                <button class="patient1" onclick="showPatient()"><span><input type=image class="patientimage" src="/img/patient.png"></span>&emsp;Patient</button>
+                <br>
+                <button class="staff1" onclick="showStaff()"><span><input type=image class="staffimage" src="/img/staff.png" </span>&emsp;Staff</button>
+                <br>
+                <button class="profile1" onclick="showProfile()"><span><input type=image class="profileimage"src="/img/profile.png"></span>&emsp;Profile</button>           
+        </div>
+        <div class="dash1" id="dash1">
+            <div class="admit1">
+                <input type=image class="admitimage" src="/img/admit.png">
+                <button class="admit-button1" onclick="showAdmit()">Admit</button>
+            </div>
+            <br>
+            <div class="discharge1">
+                <input type=image class="dischargeimage" src="/img/admit.png">
+                <button class="discharge-button1" onclick="showDischarge()">Discharge</button>
+            </div>
+            <br>
+            <div class="appointments1">
+                <input type=image class="appointmentimage" src="/img/appointments.jpg">
+                <button class="appointment-button1" onclick="showAppointments()">View Appointments</button>
+                </div>
+        </div>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/qs/6.6.0/qs.min.js"></script>
+        <script>
+            function showDoctor() {
+                var {token} = Qs.parse(location.search, { ignoreQueryPrefix: true })
+                location.href = `/admin/doctor?&token=${token}&page=${0}`
+            }
+        </script>
+        <script>
+            function dboard1(){
+                var {token} = Qs.parse(location.search, { ignoreQueryPrefix: true })
+                location.href = `/dashboard/admin?&token=${token}`
+            }
+        </script>
+        <script>
+            function showStaff(){
+                 var {token} = Qs.parse(location.search, { ignoreQueryPrefix: true })
+                location.href = `/admin/staff?&token=${token}&page=${0}`
+            }
+        </script>
+
+        <script>
+            function showPatient(){
+                var {token} = Qs.parse(location.search, { ignoreQueryPrefix: true })
+                location.href = `/admin/patient?&token=${token}&page=${0}`
+            }
+        </script>
+        <script>
+            function showProfile(){
+                var {token} = Qs.parse(location.search, { ignoreQueryPrefix: true })
+                location.href = `/adminprofile?&token=${token}`
+            }
+        </script>
+        <script>
+            function showAdmit(){
+                var {token} = Qs.parse(location.search, { ignoreQueryPrefix: true })
+                location.href = `/admin/admit?&token=${token}&page=${0}`
+            }
+        </script>
+        <script>
+            function showDischarge() {
+                var { token } = Qs.parse(location.search, { ignoreQueryPrefix: true })
+                location.href = `/admin/discharge?&token=${token}&page=${0}`
+            }
+        </script>
+        <script>
+            function showAppointments(){
+                var {token} = Qs.parse(location.search, { ignoreQueryPrefix: true })
+                location.href = `/admin/appointments?&token=${token}&page=${0}`
+            }
+        </script>
+        <script src="/js/logout.js"></script>
+    </body> 
+</html>

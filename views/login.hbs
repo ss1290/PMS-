@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+        <link rel="stylesheet" href="/stylesheet/admin.css">
+        <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
+    </head>
+    <body>
+        <h1 class="heading" style="font-size:35px;opacity:100%"><span class="glyphicon glyphicon-plus" style="font-size:40px;color:rgb(142, 142, 179);border-style:solid;border-radius:100%;padding:10px;border-width:3px;font-size:30px;"></span>&ensp; PMS</h1>
+        <div class="login">
+            <div class="logintext">
+                <p>Login</p>
+            </div>
+            <form id="login-form" class="login-form">
+                <div class="email">
+                    <label>Email &emsp;<span class="glyphicon glyphicon-envelope" ></span></label>
+                    <input type="text" id="email" autocomplete="username" required >
+                </div>
+                <br>
+                    <label>Password&emsp;<span class="fas fa-unlock-alt"></span></label>
+                    <input type="password" id="password" name="password" autocomplete="current-password" required>
+                    <i class="far fa-eye" id="toggle-password" style="margin-left:-30px;cursor:pointer"></i>
+                <br>
+                <button class="submitButton">Submit</button>
+                </form>
+                <p id="message1" style="margin:auto;display:table;margin-bottom:30px;color:red"></p>
+                <button onclick="forgotPassword()" class="forgotPassword">Forgot Password</button>
+        </div>
+        <script src="/js/login.js"></script>
+        <script>
+            function forgotPassword(){
+                location.href='/forgotPassword'
+            }
+        </script>
+    </body>
+</html>
