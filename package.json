@@ -4,8 +4,8 @@
   "description": "",
   "main": "controller/app.js",
   "scripts": {
-    "start": "node /controller/app.js",
-    "dev": "nodemon /controller/app.js -e js,hbs,css"
+    "start": "node controller/app.js",
+    "dev": "nodemon controller/app.js -e js,hbs,css"
   },
   "author": "",
   "license": "ISC",
