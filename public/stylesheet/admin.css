@@ -46,23 +46,19 @@ body {
     margin-bottom: 50px;
 }
 .heading{
-    margin-left: 140px;
-    margin-top: 50px;
+    margin-left: 185px;
+    margin-top: 40px;
     margin-bottom: 15px;
 }
 .heading1{
-    margin-top: 0px;
-    margin-left: 0px;
     border-style:solid;
     border-width: 1px;
     background-color:rgb(222, 222, 233);
-    padding:2px;
     width: 1920px;
-    padding-left: 70px;
 }
 .logoutButton{
     position:absolute;
-    font-size:25px;
+    font-size:30px;
     margin-left:1680px;
     margin-top:-60px;
     border-radius: 18px;
