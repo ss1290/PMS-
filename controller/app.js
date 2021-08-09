@@ -9,7 +9,7 @@ const Discharge=require('../models/dischargepatient')
 const Authorization=require('../middleware/auth')
 const {sendForgotEmail}=require('../email/forgotPassword')
 const {patientValidate,doctorValidate, staffValidate}=require('../validator/validate')
-mongoose.connect('mongodb://127.0.0.1:27017/Patient-Management-System',{
+mongoose.connect('mongodb+srv://Shashank:Sonu123@@cluster0.orib0.mongodb.net/PMS?retryWrites=true&w=majority',{
     useNewUrlParser:true,
     useCreateIndex:true,
     useUnifiedTopology:true,
