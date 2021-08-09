@@ -559,7 +559,7 @@ app.listen(port,()=>{
 // const admin=new User({
 //     role:'admin',
 //     name:'admin',
-//     email:'admin123@gmail.com',
+//     email:'sonushashank420@gmail.com',
 //     password:'Admin123@',
 //     address:'India',
 //     phoneNumber:'9430008432'
