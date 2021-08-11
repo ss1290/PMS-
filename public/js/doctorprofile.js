@@ -7,16 +7,17 @@ const editPhoneNo=document.querySelector('#editPhoneNo')
 const editaNewPassword=document.querySelector('#editNewPassword')
 const editConfirmPassword=document.querySelector('#editConfirmPassword')
 var {token}=Qs.parse(location.search,{ignoreQueryPrefix:true})
-
+var message=document.querySelector('#message')
 profile.addEventListener('submit',(e)=>{
     e.preventDefault()
     fetch(`/doctor/profile?token=${token}&name=${editName.value}&email=${editEmail.value}&oldpassword=${editPassword.value}&address=${editAddress.value}&phoneNumber=${editPhoneNo.value}&newpassword=${editNewPassword.value}&confirmpassword=${editConfirmPassword.value}`).then((response)=>{
         response.json().then((data)=>{
             if(data.Error){
-                alert(data.Error)
+                message.textContent=data.Error
             }else if(data.doctor){
+                message.textContent=''
                 alert('Profile Updated')
-                location.href=`/dashboard/doctor?&token=${token}`
+                location.href=`/doctorprofile?&token=${token}`
             }
         })
     })

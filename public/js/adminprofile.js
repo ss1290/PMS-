@@ -10,11 +10,12 @@ var message=document.querySelector('#message')
 var {token}=Qs.parse(location.search,{ignoreQueryPrefix:true})
 adminprofile.addEventListener('submit',(e)=>{
     e.preventDefault()
-    fetch(`/admin/profile?token=${token}&name=${editadminName.value}&email=${editadminEmail.value}&oldpassword=${editadminPassword.value}&address=${editadminAddress.value}&phoneNumber=${editadminPhoneNo.value}&newpassword=${editadminNewPassword.value}&confirmpassword=${editadminConfirmPassword.value}`).then((response)=>{
+    fetch(`/profile?token=${token}&name=${editadminName.value}&email=${editadminEmail.value}&oldpassword=${editadminPassword.value}&address=${editadminAddress.value}&phoneNumber=${editadminPhoneNo.value}&newpassword=${editadminNewPassword.value}&confirmpassword=${editadminConfirmPassword.value}`).then((response)=>{
         response.json().then((data)=>{
             if(data.Error){
                 message.textContent=data.Error
             }else if(data.admin){
+                message.textContent=''
                 alert('Profile Updated')
                 location.href=`/adminprofile?&token=${token}`
             }

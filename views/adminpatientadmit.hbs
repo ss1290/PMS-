@@ -4,9 +4,9 @@
         <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
         <link rel="stylesheet" href="/stylesheet/admin.css">
         <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     </head>
     <body>
         <div class="heading1">
@@ -39,7 +39,7 @@
                     <button id="admitpatient" class="admitPatient" onclick="admitpatient()">Admit Patient</button>
                 </div>
                 <div class="searchbox1" id="searchbox1">
-                    <span class="glyphicon glyphicon-search" style="position:absolute;margin-top:325px;margin-left:5px;"></span>
+                    <span class="fas fa-search" style="position:absolute;margin-top:5px;margin-left:5px;"></span>
                     <input type="text" placeholder="search" id="admitsearch" style="padding-left:50px;">
                 </div>
                 <table class="Admitlist" id="Admitlist">
@@ -58,7 +58,6 @@
                     <form id="admitForm">
                         <label>Patient Name</label>
                         <select id="patientname">
-                            <option>Select an Option</option>
                             {{#each this.patient}}
                             <option value="{{this.name}}">{{this.name}}</option>
                             {{/each}}
@@ -66,7 +65,6 @@
                         <br>
                         <label>Patient Id</label>
                         <select id="patientid">
-                            <option>Select an Option</option>
                             {{#each this.patient}}
                             <option value="{{this.patientId}}">{{this.patientId}}</option>
                             {{/each}}
@@ -74,7 +72,6 @@
                         <br>
                         <label>Doctor Name</label>
                         <select id="doctorName">
-                            <option>Select an Option</option>
                             {{#each this.doctor}}
                             <option>{{this.name}}</option>
                             {{/each}}
@@ -82,7 +79,6 @@
                         <br>
                         <label>Department</label>
                         <select id="department">
-                            <option>Select an Option</option>
                             {{#each this.doctor}}
                             <option>{{this.department}}</option>
                             {{/each}}
@@ -93,7 +89,6 @@
                         <br>
                         <label>Select Ward</label>
                         <select id="ward">
-                            <option>Select an Option</option>
                             <option value="Emergency Ward">Emergency Ward</option>
                             <option value="General Ward">General Ward</option>
                             <option value="Private Ward">Private Ward</option>
@@ -113,11 +108,11 @@
                     </form>
                     <button class="cancelbutton" onclick="resetform()">Cancel</button>
                 </div>
-            </div>
-            <p id="message" class="message"></p>
+              <p id="message" class="message"></p>
+              </div>
             <script src="https://cdnjs.cloudflare.com/ajax/libs/qs/6.6.0/qs.min.js"></script>
-            <script src="/js/admitshow.js"></script>
             <script src="/js/admitpatient.js"></script>
+            <script src="/js/admitshow.js"></script>
             <script>
                 function admitpatient(){
                     document.getElementById('admitform').style.display=''

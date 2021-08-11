@@ -4,7 +4,7 @@
         <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
         <link rel="stylesheet" href="/stylesheet/admin.css">
         <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     </head>
@@ -39,7 +39,7 @@
                 <button id="dischargepatient" class="dischargePatient" onclick="dischargepatient()">Discharge Patient</button>
             </div>
             <div class="searchbox1" id="searchbox1">
-                <span class="glyphicon glyphicon-search" style="position:absolute;margin-top:325px;margin-left:5px;"></span>
+                <span class="fas fa-search" style="position:absolute;margin-top:5px;margin-left:5px;"></span>
                 <input type="text" placeholder="search" id="dischargesearch" style="padding-left:50px;">
             </div>
             <table class="Dischargelist" id="Dischargelist">
@@ -60,7 +60,6 @@
             <form id="dischargeForm">
                 <label>Patient Name</label>
                 <select id="PatientName">
-                    <option>Select an Option</option>
                     {{#each this.admit}}
                     <option value="{{this.name}}">{{this.name}}</option>
                     {{/each}}
@@ -68,7 +67,6 @@
                 <br>
                 <label>Patient Id</label>
                 <select id="Patientid">
-                    <option>Select an Option</option>
                     {{#each this.admit}}
                     <option value="{{this.patientId}}">{{this.patientId}}</option>
                     {{/each}}
@@ -76,7 +74,6 @@
                 <br>
                 <label>Doctor Name</label>
                 <select id="doctorname">
-                    <option>Select an Option</option>
                     {{#each this.admit}}
                     <option>{{this.doctor}}</option>
                     {{/each}}
@@ -84,7 +81,6 @@
                 <br>
                 <label>Department</label>
                 <select id="Department">
-                    <option>Select an Option</option>
                     {{#each this.admit}}
                     <option>{{this.department}}</option>
                     {{/each}}
@@ -95,7 +91,6 @@
                 <br>
                 <label>Select Ward</label>
                 <select id="Ward">
-                    <option>Select an Option</option>
                     <option value="Emergency Ward">Emergency Ward</option>
                     <option value="General Ward">General Ward</option>
                     <option value="Private Ward">Private Ward</option>
@@ -103,12 +98,11 @@
                 <br>
                 <label>Select Bed</label>
                 <select id="Bed">
-                    <option>Select an Option</option>
-                    <option value="Bed 1">Bed 1</option>
-                    <option value="Bed 2">Bed 2</option>
-                    <option value="Bed 3">Bed 3</option>
-                    <option value="Bed 4">Bed 4</option>
-                    <option value="Bed 5 ">Bed 5</option>
+                    <option value="Bed1">Bed 1</option>
+                    <option value="Bed2">Bed 2</option>
+                    <option value="Bed3">Bed 3</option>
+                    <option value="Bed4">Bed 4</option>
+                    <option value="Bed5">Bed 5</option>
                 </select>
                 <br>
                 <label>Bed Days</label>

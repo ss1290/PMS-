@@ -15,6 +15,7 @@ form.addEventListener('submit',(e)=>{
             if(data.Error){
                 message.textContent=data.Error
             }else if(data.admit){
+                message.textContent=''
                 alert('Patient Admitted!')
                 location.href=`/admin/admit?&token=${token}&page=${0}`
             }

@@ -3,6 +3,12 @@ body {
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     margin: auto;
 }
+form input{
+    margin-top:10px;
+}
+form select{
+    margin-top: 10px;
+}
 .login{
     border-style:solid;
     border-width:1px;
@@ -79,7 +85,7 @@ body {
 .dashboard1{
     font-size: 20px;
     background-color: white;
-    margin-bottom: 55px;
+    margin-bottom: 90px;
     border-right: 0px;
     padding-top:0px;
 }
@@ -87,28 +93,28 @@ body {
     font-size:20px;
     background-color: white;
     padding-right: 42px;
-    margin-bottom: 55px;
+    margin-bottom: 90px;
     border-right: 0px;
 }
 .patient1{
     font-size:20px;
     background-color: white;
     padding-right: 37px;
-    margin-bottom: 55px;
+    margin-bottom: 90px;
     border-right: 0px;
 }
 .staff1{
     font-size:20px;
     background-color: white;
     padding-right: 54px;
-    margin-bottom: 55px;
+    margin-bottom: 90px;
     border-right: 0px;
 }
 .profile1{
     font-size:20px;
     background-color: white;
     padding-right: 45px;
-    margin-bottom: 150px;
+    margin-bottom: 152px;
     border-right: 0px;
 }
 
@@ -135,6 +141,7 @@ body {
     margin-top: 60px;
     border-top: 0px;
     border-width: 1px;
+    border-bottom:0px;
 }
 .admit1{
     margin-left: 100px;
@@ -217,13 +224,13 @@ body {
 }
 .dash1 {
     border-style: solid;
-    width: 850px;
     margin-left: 156px;
-    margin-top: -573px;
+    margin-top: -713px;
     border-left: 0px;
-    padding-bottom: 134px;
-    padding-top:44px;
     border-width: 1px;
+    padding-top: 150px;
+    padding-bottom: 148px;
+    border-bottom: 0px;
 }
 .dash2 {
     border-style: solid;
@@ -237,39 +244,36 @@ body {
 }
 .doctorBar1{
     border-style: solid;
-    width: 670px;
     margin-left: 156px;
     border-width: 1px;
-    margin-top: -573px;
+    margin-top: -712px;
 }
 .staffBar1{
     border-style: solid;
-    width: 670px;
     margin-left: 156px;
     border-width: 1px;
-    margin-top: -573px;
+    margin-top: -712px;
 }
 .admitbar{
     border-style: solid;
-    width: 670px;
-    margin-left: 156px;
+    margin-left: 157px;
     border-width: 1px;
-    margin-top: -573px;
-
+    margin-top: -712px;
+    border-left: 0px;
 }
 .dischargebar{
     border-style: solid;
     width: 670px;
     margin-left: 156px;
     border-width: 1px;
-    margin-top: -573px;
+    margin-top: -712px;
 }
 .profilebar{
     border-style: solid;
-    width: 670px;
     margin-left: -144px;
     border-width: 1px;
-    margin-top: -573px;
+    margin-top: -712px;
+    margin-bottom:394px ;
 }
 .appointmentbar{
     border-style: solid;
@@ -288,10 +292,9 @@ body {
 
 .patientBar1{
     border-style: solid;
-    width: 670px;
     margin-left: 156px;
     border-width: 1px;
-    margin-top: -573px;
+    margin-top: -712px;
 }
 .patientBar2 {
     border-style: solid;
@@ -419,6 +422,7 @@ input::placeholder{
 input{
     width: 300px;
 }
+
 table,th,td {
     border: 1px solid black;
     padding-bottom: 5px;
@@ -551,7 +555,7 @@ label{
 
 }
 .profile{
-    margin-top: 100px;
+    margin-top: -200px;
 }
 
 .update1{

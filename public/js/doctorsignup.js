@@ -17,8 +17,9 @@ Form.addEventListener('submit',(e)=>{
             if(data.Error){
                 message.textContent=data.Error
             }else{
-            alert('Doctor Added!')
-            location.href=`/admin/doctor?&token=${token}&page=${0}`
+                message.textContent=''
+                alert('Doctor Added!')
+                location.href=`/admin/doctor?&token=${token}&page=${0}`
             }
         })
     })

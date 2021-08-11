@@ -4,7 +4,7 @@
         <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
         <link rel="stylesheet" href="/stylesheet/staff.css">
         <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     </head>
     <body>
@@ -38,38 +38,44 @@
                     <br>
                     <div class="appointments1">
                         <input type=image class="appointmentimage" src="/img/patient.png">
-                        <button class="appointment-button1" onclick="showAppointments()">New Registration/New Appointments</button>
+                        <button class="appointment-button1" onclick="addAppointments()">New Registration/New Appointments</button>
                     </div>
                 </div>
                 <script src="https://cdnjs.cloudflare.com/ajax/libs/qs/6.6.0/qs.min.js"></script>
                 <script>
                     function showProfile(){
                         var {token} = Qs.parse(location.search, { ignoreQueryPrefix: true })
-                        location.href = `/profile?&token=${token}`   
-                    }
-                </script>
-                <script>
-                    function showPatient(){
-                        var {token} = Qs.parse(location.search, { ignoreQueryPrefix: true })
-                        location.href = `/patientshow?&token=${token}`
+                        location.href = `/staffprofile?&token=${token}`   
                     }
                 </script>
                 <script>
                     function dboard1() {
-                        var {token} = Qs.parse(location.search, { ignoreQueryPrefix: true })
+                        var { token } = Qs.parse(location.search, { ignoreQueryPrefix: true })
                         location.href = `/dashboard/staff?&token=${token}`
                     }
                 </script>
                 <script>
+                    function showPatient() {
+                        var { token } = Qs.parse(location.search, { ignoreQueryPrefix: true })
+                        location.href = `/staff/patient?&token=${token}&page=${0}`
+                        }
+                </script>
+                <script>
                     function showAdmit() {
-                        var {token} = Qs.parse(location.search, { ignoreQueryPrefix: true })
-                        location.href = `/admit?&token=${token}`
-                    }
+                        var { token } = Qs.parse(location.search, { ignoreQueryPrefix: true })
+                        location.href = `/staff/admit?&token=${token}&page=${0}`
+                        }
                 </script>
                 <script>
                     function showDischarge() {
                         var { token } = Qs.parse(location.search, { ignoreQueryPrefix: true })
-                        location.href = `/discharge?&token=${token}`
+                        location.href = `/staff/discharge?&token=${token}&page=${0}`
+                    }
+                </script>
+                <script>
+                    function addAppointments() {
+                        var { token } = Qs.parse(location.search, { ignoreQueryPrefix: true })
+                        location.href = `/staff/patientregistration?&token=${token}&page=${0}`
                     }
                 </script>
                 <script src="/js/logout.js"></script>

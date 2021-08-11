@@ -12,6 +12,7 @@ editForm.addEventListener('submit',(e)=>{
             if(data.Error){
                 message.textContent=data.Error
             }else if(data.doctor){
+                message.textContent=''
                 location.href=`/staff/edit?token=${token}&id=${id}`
             }
         })

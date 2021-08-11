@@ -79,8 +79,50 @@ const staffValidate=(validate)=>{
         throw new Error('Please enter a valid phone number')
     }
 }
+const registrationValidate=(validate)=>{
+    if(!validator.isAlpha(validate.name,'en-US',{ignore:'\s'})){
+        throw new Error('Please enter a valid name')
+    }
+    if(!validator.isEmail(validate.email)){
+        throw new Error('Please enter a valid email')
+    }
+     if(!validator.isAlphanumeric(validate.address,'en-US',{ignore:'\s'})){
+        throw new Error('Please enter a valid address')
+    }
+    if(typeof validate.phoneNumber!=='number'){
+        throw new Error('Please enter a valid phone number')
+    }
+    if(typeof validate.age!=='number'){
+        throw new Error('Please enter a valid age')
+    }
+    if(Math.floor(Math.log10(Math.abs(validate.phoneNumber))) + 1<10){
+        throw new Error('Please enter a valid phone number')
+    }
+}
+const appointmentValidate=(validate)=>{
+    if(!validator.isAlpha(validate.name,'en-US',{ignore:'\s'})){
+        throw new Error('Please enter a valid name')
+    }
+    if(!validator.isEmail(validate.email)){
+        throw new Error('Please enter a valid email')
+    }
+     if(!validator.isAlphanumeric(validate.address,'en-US',{ignore:'\s'})){
+        throw new Error('Please enter a valid address')
+    }
+    if(typeof validate.phoneNumber!=='number'){
+        throw new Error('Please enter a valid phone number')
+    }
+    if(typeof validate.age!=='number'){
+        throw new Error('Please enter a valid age')
+    }
+    if(Math.floor(Math.log10(Math.abs(validate.phoneNumber))) + 1<10){
+        throw new Error('Please enter a valid phone number')
+    }  
+}
 module.exports={
     patientValidate,
     doctorValidate,
-    staffValidate
+    staffValidate,
+    registrationValidate,
+    appointmentValidate
 }

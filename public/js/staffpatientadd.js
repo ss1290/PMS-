@@ -8,18 +8,19 @@ const patientAge=document.querySelector('#age')
 const gender=document.querySelector('#gender')
 const bloodGroup=document.querySelector('#bloodGroup')
 const birthDate=document.querySelector('#birthDate')
-var {token} = Qs.parse(location.search, { ignoreQueryPrefix: true })
-
+var message=document.querySelector('#message')
+ var {token} = Qs.parse(location.search, { ignoreQueryPrefix: true })
 patientForm.addEventListener('submit',(e)=>{
     e.preventDefault()
     fetch(`/add/patient?token=${token}&name=${patientName.value}&patientId=${patientId.value}&email=${patientEmail.value}&address=${patientAddress.value}&phoneNumber=${patientPhoneNo.value}&age=${patientAge.value}&gender=${gender.value}&birthDate=${birthDate.value}&bloodGroup=${bloodGroup.value}`).then((response)=>{
         response.json().then((data)=>{
-             if(data.Error){
-                alert(data.Error)
+            if(data.Error){
+                message.textContent=data.Error   
             }
             else if(data.patient){
+                message.textContent=''
                 alert('Patient Added!')
-                location.href=`/patientshow?&token=${token}`
+                location.href=`/staff/patient?&token=${token}&page=${0}`
             }
         })
     })

@@ -19,7 +19,7 @@ form.addEventListener('submit',(e)=>{
             }else if(data.discharge){
                 message.textContent=''
                 alert('Patient Discharged!')
-                location.href=`/admin/discharge?&token=${token}&page=${0}`
+                location.href=`/staff/discharge?&token=${token}&page=${0}`
             }
         })
     })

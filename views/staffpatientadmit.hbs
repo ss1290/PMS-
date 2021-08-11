@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+        <link rel="stylesheet" href="/stylesheet/staff.css">
+        <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    </head>
+    <body>
+        <div class="heading1">
+            <h1 class="heading" style="font-size:50px;"><span class="fas fa-plus"
+                    style="font-size:40px;color:rgb(142, 142, 179);border-style:solid;border-radius:100%;padding:10px;border-width:7px;"></span>&ensp;
+                PMS</h1>
+            <button class="logoutButton" onclick="logout()"><span class="fas fa-power-off"></span>&ensp;Logout</button>
+        </div>
+        <h1 class="heading2" id="heading2">My Profile</h1>
+        <div class="navigationbar">
+            <button class="dashboard1" onclick="dboard1()"><span><input type=image class="dashboardimage"
+                        src="/img/dashboard.png"></span></span>&nbsp;Dashboard</button>
+            <br>
+            <button class="patient1" onclick="showPatient()"><span><input type=image class="patientimage"
+                        src="/img/patient.png"></span>&emsp;Patient</button>
+            <br>
+            <button class="profile1" onclick="showProfile()"><span><input type=image class="profileimage"
+                        src="/img/profile.png"></span>&emsp;Profile</button>
+        </div>
+        <div id="admitPatient" class="admit2">
+            <div class="admitbar">
+                <input type=image class="feed1" src="/img/feed.png">
+                <button id="admitList" class="admitList" onclick="admitlist()">Admit List</button>
+                <button id="admitpatient" class="admitPatient" onclick="admitpatient()">Admit Patient</button>
+            </div>
+            <div class="searchbox2" id="searchbox1">
+                <span class="fas fa-search" style="position:absolute;margin-top:5px;margin-left:5px;"></span>
+                <input type="text" placeholder="search" id="admitsearch" style="padding-left:50px;">
+            </div>
+            <table class="Admitlist" id="Admitlist">
+                <tr>
+                    <th>S.No.</th>
+                    <th>Patient Name</th>
+                    <th>Select Ward</th>
+                    <th>Doctor Name</th>
+                </tr>
+                <tbody id="list4">
+                </tbody>
+            </table>
+            <button class="next" id="edit2" onclick="next()">next</button>
+            <div class="admitform" id="admitform" style="display:none">
+                <form id="admitForm">
+                    <label>Patient Name</label>
+                    <select id="patientname">
+                        {{#each this.patient}}
+                        <option value="{{this.name}}">{{this.name}}</option>
+                        {{/each}}
+                    </select>
+                    <br>
+                    <label>Patient Id</label>
+                    <select id="patientid">
+                        {{#each this.patient}}
+                        <option value="{{this.patientId}}">{{this.patientId}}</option>
+                        {{/each}}
+                    </select>
+                    <br>
+                    <label>Doctor Name</label>
+                    <select id="doctorName">
+                        {{#each this.doctor}}
+                        <option>{{this.name}}</option>
+                        {{/each}}
+                    </select>
+                    <br>
+                    <label>Department</label>
+                    <select id="department">
+                        {{#each this.doctor}}
+                        <option>{{this.department}}</option>
+                        {{/each}}
+                    </select>
+                    <br>
+                    <label>Date</label>
+                    <input type="date" id="date" min="{{minDate}}">
+                    <br>
+                    <label>Select Ward</label>
+                    <select id="ward">
+                        <option value="Emergency Ward">Emergency Ward</option>
+                        <option value="General Ward">General Ward</option>
+                        <option value="Private Ward">Private Ward</option>
+                    </select>
+                    <br>
+                    <label>Select Bed</label>
+                    <select id="bed">
+                        <option value="Bed1">Bed 1</option>
+                        <option value="Bed2">Bed 2</option>
+                        <option value="Bed3">Bed 3</option>
+                        <option value="Bed4">Bed 4</option>
+                        <option value="Bed5">Bed 5</option>
+                    </select>
+                    <br>
+                    <button class="AdmitButton"> submit</button>
+                </form>
+                <button class="cancelbutton" onclick="resetform()">Cancel</button>
+            </div>
+            <p id="message" class="message"></p>
+        </div>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/qs/6.6.0/qs.min.js"></script>
+        <script>
+            function showProfile() {
+                var { token } = Qs.parse(location.search, { ignoreQueryPrefix: true })
+                location.href = `/staffprofile?&token=${token}`
+            }
+        </script>
+        <script>
+            function dboard1() {
+                var { token } = Qs.parse(location.search, { ignoreQueryPrefix: true })
+                location.href = `/dashboard/staff?&token=${token}`
+            }
+        </script>
+        <script>
+            function showPatient() {
+                var { token } = Qs.parse(location.search, { ignoreQueryPrefix: true })
+                location.href = `/staff/patient?&token=${token}&page=${0}`
+            }
+        </script>
+        <script>
+            function admitpatient() {
+                document.getElementById('admitform').style.display = ''
+                document.getElementById('Admitlist').style.display = 'none'
+                document.getElementById('searchbox1').style.display = 'none'
+                document.getElementById('edit2').style.display = "none"
+            }
+        </script>
+        <script>
+            function admitlist() {
+                document.getElementById('admitform').style.display = 'none'
+                document.getElementById('Admitlist').style.display = ''
+                document.getElementById('searchbox1').style.display = ''
+                document.getElementById('edit2').style.display = "none"
+            }
+        </script>
+        <script src="/js/logout.js"></script>
+        <script src="/js/staffadmitpatient.js"></script>
+        <script src="/js/staffadmitshow.js"></script>
+    </body>
+</html>
+

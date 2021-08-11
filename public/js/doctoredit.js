@@ -17,6 +17,8 @@ doctoreditForm.addEventListener('submit',(e)=>{
             if(data.Error){
                 message.textContent=data.Error
             }else if(data.doctor){
+                message.textContent=''
+                alert('doctor edited')
                 location.href=`/doctor/edit?token=${token}&id=${id}`
             }
         })

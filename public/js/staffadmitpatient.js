@@ -6,17 +6,18 @@ var department=document.querySelector('#department')
 var date=document.querySelector('#date')
 var ward=document.querySelector('#ward')
 var bed=document.querySelector('#bed')
+var message=document.querySelector('#message')
 var {token}=Qs.parse(location.search,{ignoreQueryPrefix:true})
 form.addEventListener('submit',(e)=>{
     e.preventDefault()
     fetch(`/admit/patient?token=${token}&name=${patientname.value}&patientId=${id.value}&doctorname=${doctorname.value}&date=${date.value}&department=${department.value}&patientWard=${ward.value}&patientBed=${bed.value}`).then((response)=>{
         response.json().then((data)=>{
             if(data.Error){
-                alert(data.Error)
+                message.textContent=data.Error
             }else if(data.admit){
                 message.textContent=''
                 alert('Patient Admitted!')
-                location.href= `/admit?&token=${token}`
+                location.href=`/staff/admit?&token=${token}&page=${0}`
             }
         })
     })
@@ -24,3 +25,11 @@ form.addEventListener('submit',(e)=>{
 function resetform(){
     form.reset()
 }
+var optionValues2 =[];
+$('#department option').each(function(){
+   if($.inArray(this.value, optionValues2) >-1){
+      $(this).remove()
+   }else{
+      optionValues2.push(this.value);
+   }
+});

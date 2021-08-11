@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+        <link rel="stylesheet" href="/stylesheet/staff.css">
+        <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    </head>
+    <body>
+        <div class="heading1">
+            <h1 class="heading" style="font-size:50px;"><span class="fas fa-plus"
+                    style="font-size:40px;color:rgb(142, 142, 179);border-style:solid;border-radius:100%;padding:10px;border-width:7px;"></span>&ensp;
+                PMS</h1>
+            <button class="logoutButton" onclick="logout()"><span class="fas fa-power-off"></span>&ensp;Logout</button>
+        </div>
+        <h1 class="heading2" id="heading2">My Profile</h1>
+        <div class="navigationbar">
+            <button class="dashboard1" onclick="dboard1()"><span><input type=image class="dashboardimage"
+                        src="/img/dashboard.png"></span></span>&nbsp;Dashboard</button>
+            <br>
+            <button class="patient1" onclick="showPatient()"><span><input type=image class="patientimage"
+                        src="/img/patient.png"></span>&emsp;Patient</button>
+            <br>
+            <button class="profile1" onclick="showProfile()"><span><input type=image class="profileimage"
+                        src="/img/profile.png"></span>&emsp;Profile</button>
+        </div>
+        <div id="dischargePatient" class="discharge2">
+            <div class="dischargebar">
+                <input type=image class="feed1" src="/img/feed.png">
+                <button id="dischargeList" class="dischargeList" onclick="dischargelist()">Discharge List</button>
+                <button id="dischargepatient" class="dischargePatient" onclick="dischargepatient()">Discharge Patient</button>
+            </div>
+            <div class="searchbox2" id="searchbox1">
+                <span class="fas fa-search" style="position:absolute;margin-top:5px;margin-left:5px;"></span>
+                <input type="text" placeholder="search" id="dischargesearch" style="padding-left:50px;">
+            </div>
+            <table class="Dischargelist" id="Dischargelist">
+                <thead>
+                    <tr>
+                        <th>S.No.</th>
+                        <th>Patient Name</th>
+                        <th>Select Ward</th>
+                        <th>Doctor Name</th>
+                    </tr>
+                </thead>
+                <tbody id="list5">
+                </tbody>
+            </table>
+            <button class="next" id="edit2" onclick="next()">next</button>
+            <div class="dischargeform" id="dischargeform" style="display:none;">
+                <form id="dischargeForm">
+                    <label>Patient Name</label>
+                    <select id="PatientName">
+                        {{#each this.admit}}
+                        <option value="{{this.name}}">{{this.name}}</option>
+                        {{/each}}
+                    </select>
+                    <br>
+                    <label>Patient Id</label>
+                    <select id="Patientid">
+                        {{#each this.admit}}
+                        <option value="{{this.patientId}}">{{this.patientId}}</option>
+                        {{/each}}
+                    </select>
+                    <br>
+                    <label>Doctor Name</label>
+                    <select id="doctorname">
+                        {{#each this.admit}}
+                        <option>{{this.doctor}}</option>
+                        {{/each}}
+                    </select>
+                    <br>
+                    <label>Department</label>
+                    <select id="Department">
+                        {{#each this.admit}}
+                        <option>{{this.department}}</option>
+                        {{/each}}
+                    </select>
+                    <br>
+                    <label>Date</label>
+                    <input type="date" id="Date" min="{{minDate}}">
+                    <br>
+                    <label>Select Ward</label>
+                    <select id="Ward">
+                        <option value="Emergency Ward">Emergency Ward</option>
+                        <option value="General Ward">General Ward</option>
+                        <option value="Private Ward">Private Ward</option>
+                    </select>
+                    <br>
+                    <label>Select Bed</label>
+                    <select id="Bed">
+                        <option value="Bed1">Bed 1</option>
+                        <option value="Bed2">Bed 2</option>
+                        <option value="Bed3">Bed 3</option>
+                        <option value="Bed4">Bed 4</option>
+                        <option value="Bed5">Bed 5</option>
+                    </select>
+                    <br>
+                    <label>Bed Days</label>
+                    <input type="text" id="days">
+                    <br>
+                    <label>Enter Charges</label>
+                    <input type="text" id="charges">
+                    <br>
+                    <button class="AdmitButton"> submit</button>
+                </form>
+                <button class="cancelbutton" onclick="resetForm()">Cancel</button>
+            </div>
+        </div>
+        <p id="message" class="message"></p>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/qs/6.6.0/qs.min.js"></script>
+        <script>
+            function dischargepatient() {
+                document.getElementById('dischargeform').style.display = ''
+                document.getElementById('Dischargelist').style.display = 'none'
+                document.getElementById('searchbox1').style.display = 'none'
+                document.getElementById('edit2').style.display = "none"
+            }
+        </script>
+        <script>
+            function dischargelist() {
+                document.getElementById('dischargeform').style.display = 'none'
+                document.getElementById('Dischargelist').style.display = ''
+                document.getElementById('searchbox1').style.display = ''
+                document.getElementById('edit2').style.display = "none"
+            }
+        </script>
+        <script>
+            function showProfile() {
+                var { token } = Qs.parse(location.search, { ignoreQueryPrefix: true })
+                location.href = `/staffprofile?&token=${token}`
+            }
+        </script>
+        <script>
+            function dboard1() {
+                var { token } = Qs.parse(location.search, { ignoreQueryPrefix: true })
+                location.href = `/dashboard/staff?&token=${token}`
+            }
+        </script>
+        <script>
+            function showPatient() {
+                var { token } = Qs.parse(location.search, { ignoreQueryPrefix: true })
+                location.href = `/staff/patient?&token=${token}&page=${0}`
+            }
+        </script>
+        <script src="/js/logout.js"></script>
+        <script src="/js/staffpatientdischarge.js"></script>
+        <script src="/js/staffdischargeshow.js"></script>
+    </body>
+</html>

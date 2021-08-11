@@ -6,9 +6,10 @@ const User=require('../models/user')
 const Patient=require('../models/patient')
 const Admit=require('../models/admitpatient')
 const Discharge=require('../models/dischargepatient')
+const Appointment=require('../models/appointment')
 const Authorization=require('../middleware/auth')
 const {sendForgotEmail}=require('../email/forgotPassword')
-const {patientValidate,doctorValidate, staffValidate}=require('../validator/validate')
+const {patientValidate,doctorValidate, staffValidate,registrationValidate,appointmentValidate}=require('../validator/validate')
 mongoose.connect('mongodb+srv://Shashank:Sonu123@@cluster0.orib0.mongodb.net/PMS?retryWrites=true&w=majority',{
     useNewUrlParser:true,
     useCreateIndex:true,
@@ -104,6 +105,10 @@ app.get('/dashboard/admin',Authorization,async(req,res)=>{
             if(!doctor){
                 throw new Error('No Doctor available with given name in this department')
             }
+            const admit=await Admit.findOne({patientWard:req.query.patientWard,patientBed:req.query.patientBed})
+            if(!admit){
+                throw new Error('No Patient Admitted with this name in given ward and bed')
+            } 
             const discharge=new Discharge({
                 name:req.query.name,
                 patientId:req.query.patientId,
@@ -139,6 +144,11 @@ app.get('/dashboard/admin',Authorization,async(req,res)=>{
     })
     app.get('/admin/appointments',Authorization,async(req,res)=>{
         res.render('adminappointments',{})
+    })
+    app.get('/patient/appointment,Authorization',async(req,res)=>{
+        const page=parseInt(req.query.page, 10) || 0
+        const Appointments=await Appointment.find({}).skip(page*10).limit(10)
+        res.send({Appointments})
     })
 app.get('/signup/doctor',Authorization,async(req,res)=>{
     try{
@@ -223,7 +233,7 @@ app.get('/signup/staff',Authorization,async(req,res)=>{
     app.get('/admin/staff',Authorization,async(req,res)=>{
         res.render('adminstaff',{})
     })
-    app.get('/admin/profile',Authorization,async(req,res)=>{
+    app.get('/profile',Authorization,async(req,res)=>{
         try{
             if(req.query.oldpassword){
                 if(req.query.oldpassword!=req.user.password){
@@ -378,56 +388,22 @@ app.get('/signup/staff',Authorization,async(req,res)=>{
 
     //Doctor Router
     app.get('/dashboard/doctor',Authorization,async(req,res)=>{
-        res.render('doctorDashboard',{
+        res.render('doctorDashboard',{})
+    })
+    app.get('/doctorprofile',Authorization,async(req,res)=>{
+        res.render('doctorprofile',{
             name:req.user.name,
             email:req.user.email,
             address:req.user.address,
             phoneNumber:req.user.phoneNumber
         })
     })
+    app.get('/doctor/patient',Authorization,async(req,res)=>{
+    res.render('doctorpatient',{})
+})
     
-    app.get('/doctor/profile',Authorization,async(req,res)=>{
-        try{
-            if(req.query.oldpassword){
-                if(req.query.oldpassword!=req.user.password){
-                    throw new Error('Please enter right password')
-                }
-            }
-            if(req.query.newpassword!==req.query.confirmpassword){
-                throw new Error('Confirm password and New password should be same')
-            }
-            if(req.query.newpassword){{
-                if(!validator.isStrongPassword(req.query.newpassword,{
-                    minLength: 8, minLowercase: 1,
-                    minUppercase: 1, minNumbers: 1, minSymbols: 1})) 
-                    {
-                        throw new Error('Please choose a password of 8 characters with atleast one lowercase letter and one uppercase letter and one symbol')
-                    }
-                    await User.findByIdAndUpdate(req.user._id,{
-                        name:req.query.name,
-                        email:req.query.email,
-                        address:req.query.address,
-                        phoneNumber:req.query.phoneNumber,
-                        password:req.query.newpassword
-                    })
-                }}else{
-                    await User.findByIdAndUpdate(req.user._id,{
-                    name:req.query.name,
-                    email:req.query.email,
-                    address:req.query.address,
-                    phoneNumber:req.query.phoneNumber
-                })
-            }
-            res.send({doctor:req.user})
-        }catch(error){
-            res.send({Error:error.message})
-        }
-
-    })
-
-
     //Staff Router
-       app.get('/dashboard/staff',Authorization,async(req,res)=>{
+    app.get('/dashboard/staff',Authorization,async(req,res)=>{
         res.render('staffDashboard',{
             name:req.user.name,
             email:req.user.email,
@@ -435,46 +411,7 @@ app.get('/signup/staff',Authorization,async(req,res)=>{
             phoneNumber:req.user.phoneNumber
         })
     })
-    app.get('/staff/profile',Authorization,async(req,res)=>{
-        try{
-            if(req.query.oldpassword){
-                if(req.query.oldpassword!=req.user.password){
-                    throw new Error('Please enter right password')
-                }
-            }
-            if(req.query.newpassword!==req.query.confirmpassword){
-                throw new Error('Confirm password and New password should be same')
-            }
-            if(req.query.newpassword){{
-                if(!validator.isStrongPassword(req.query.newpassword,{
-                    minLength: 8, minLowercase: 1,
-                    minUppercase: 1, minNumbers: 1, minSymbols: 1})) 
-                    {
-                        throw new Error('Please choose a password of 8 characters with atleast one lowercase letter and one uppercase letter and one symbol')
-                    }
-                    await User.findByIdAndUpdate(req.user._id,{
-                        name:req.query.name,
-                        email:req.query.email,
-                        address:req.query.address,
-                        phoneNumber:req.query.phoneNumber,
-                        password:req.query.newpassword
-                    })
-                }}else{
-                    await User.findByIdAndUpdate(req.user._id,{
-                    name:req.query.name,
-                    email:req.query.email,
-                    address:req.query.address,
-                    phoneNumber:req.query.phoneNumber
-                })
-            }
-            res.send({staff:req.user})
-        }catch(error){
-            res.send({Error:error.message})
-        }
-    })
-
-    //profile staff
-    app.get('/profile',Authorization,async(req,res)=>{
+    app.get('/staffprofile',Authorization,async(req,res)=>{
         res.render('staffprofile',{
             name:req.user.name,
             email:req.user.email,
@@ -482,23 +419,134 @@ app.get('/signup/staff',Authorization,async(req,res)=>{
             phoneNumber:req.user.phoneNumber,
         })
     })
-
-    //profile admin
-    app.get('/profile1',Authorization,async(req,res)=>{
-        res.render('adminprofile',{
-            name:req.user.name,
-            email:req.user.email,
-            address:req.user.address,
-            phoneNumber:req.user.phoneNumber,
+  
+    app.get('/staff/patient',Authorization,async(req,res)=>{
+    res.render('staffpatient',{})
+})
+app.get('/staff/admit',Authorization,async(req,res)=>{
+        var dtToday = new Date();
+        var month = dtToday.getMonth() + 1;
+        var day = dtToday.getDate();
+        var year = dtToday.getFullYear();
+        if(month < 10)
+        month = '0' + month.toString();
+        if(day < 10)
+        day = '0' + day.toString();
+        var minDate = year + '-' + month + '-' + day;    
+        const doctor=await User.find({role:'doctor'})
+        const patient=await Patient.find({})
+        res.render('staffpatientadmit',{
+            doctor,
+            patient,
+            minDate
         })
     })
-
-
-
-    //Admit and Discharge
-  
-    
-
+    app.get('/staff/discharge',Authorization,async(req,res)=>{
+        const admit=await Admit.find({})
+        var dtToday = new Date();
+        var month = dtToday.getMonth() + 1;
+        var day = dtToday.getDate();
+        var year = dtToday.getFullYear();
+        if(month < 10)
+        month = '0' + month.toString();
+        if(day < 10)
+        day = '0' + day.toString();
+        var minDate = year + '-' + month + '-' + day; 
+        res.render('staffpatientdischarge',{
+            admit,
+            minDate
+        })
+    })
+    app.get('/staff/patientregistration',Authorization,async(req,res)=>{
+        var dtToday = new Date();
+        var month = dtToday.getMonth() + 1;
+        var day = dtToday.getDate();
+        var year = dtToday.getFullYear();
+        if(month < 10)
+        month = '0' + month.toString();
+        if(day < 10)
+        day = '0' + day.toString();
+        var minDate = year + '-' + month + '-' + day; 
+        const doctor=await User.find({role:'doctor'})
+        res.render('patientregistration',{doctor,minDate})
+    })
+    app.get('/patient/registration',Authorization,async(req,res)=>{
+        try{
+            const doctor=await User.findOne({name:req.query.doctor,department:req.query.department})
+            if(!doctor){
+                throw new Error('No Doctor available with given name in this department')
+            }
+            const patient=await Patient.findOne({
+                name:req.query.name,
+                email:req.query.email
+            })
+            if(patient){
+                throw new Error('Patient already registered')
+            }
+            const registration=new Appointment({
+                doctor:req.query.doctor,
+                department:req.query.department,
+                date:req.query.date,
+                time:req.query.time,
+                name:req.query.name,
+                email:req.query.email,
+                address:req.query.address,
+                phoneNumber:req.query.phoneNumber,
+                age:req.query.age,
+                gender:req.query.gender,
+                bloodGroup:req.query.bloodGroup
+        })
+        registrationValidate(registration)
+        await registration.save()
+        res.send({registration})
+        }catch(error){
+            res.send({Error:error.message})
+        }
+    })
+    app.get('/staff/patientappointment',Authorization,async(req,res)=>{
+        const doctor=await User.find({role:'doctor'})
+        const patient=await Patient.find({})
+        var dtToday = new Date();
+        var month = dtToday.getMonth() + 1;
+        var day = dtToday.getDate();
+        var year = dtToday.getFullYear();
+        if(month < 10)
+        month = '0' + month.toString();
+        if(day < 10)
+        day = '0' + day.toString();
+        var minDate = year + '-' + month + '-' + day; 
+        res.render('patientappointment',{doctor,patient,minDate})
+    })
+    app.get('/patient/appointment',Authorization,async(req,res)=>{
+        try{
+            const doctor=await User.findOne({name:req.query.doctor,department:req.query.department})
+            if(!doctor){
+                throw new Error('No Doctor available with given name in this department')
+            }
+            const appointment =new Appointment({
+                doctor:req.query.doctor,
+                department:req.query.department,
+                date:req.query.date,
+                time:req.query.time,
+                name:req.query.name,
+                email:req.query.email,
+                address:req.query.address,
+                phoneNumber:req.query.phoneNumber,
+                age:req.query.age,
+                gender:req.query.gender,
+                bloodGroup:req.query.bloodGroup
+            })
+        appointmentValidate(appointment)
+        await appointment.save()
+        res.send({appointment})
+        }catch(error){
+            res.send({Error:error.message})
+        }
+    })
+    app.get('/patient/id',Authorization,async(req,res)=>{
+        const patient=await Patient.findOne({patientId:req.query.patientId})
+        res.send({patient})
+    })
     //forgot password
     app.get('/forgot',async(req,res)=>{
         try{

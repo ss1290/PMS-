@@ -12,8 +12,9 @@ staffForm.addEventListener('submit',(e)=>{
             if(data.Error){
                 message.textContent=data.Error
             }else{
-            alert('Staff Added!')
-            location.href=`/admin/staff?&token=${token}&page=${0}`
+                message.textContent=''
+                alert('Staff Added!')
+                location.href=`/admin/staff?&token=${token}&page=${0}`
             }
         })
     })
