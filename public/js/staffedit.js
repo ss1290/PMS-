@@ -11,8 +11,9 @@ editForm.addEventListener('submit',(e)=>{
         response.json().then((data)=>{
             if(data.Error){
                 message.textContent=data.Error
-            }else if(data.doctor){
+            }else if(data.staff){
                 message.textContent=''
+                alert('staff edited')
                 location.href=`/staff/edit?token=${token}&id=${id}`
             }
         })

@@ -9,7 +9,8 @@ const Discharge=require('../models/dischargepatient')
 const Appointment=require('../models/appointment')
 const Authorization=require('../middleware/auth')
 const {sendForgotEmail}=require('../email/forgotPassword')
-const {patientValidate,doctorValidate, staffValidate,registrationValidate,appointmentValidate}=require('../validator/validate')
+const validator =require('validator')
+const {patientValidate,doctorValidate, staffValidate,registrationValidate,appointmentValidate,doctoreditValidate,patienteditValidate,staffeditValidate}=require('../validator/validate')
 mongoose.connect('mongodb+srv://Shashank:Sonu123@@cluster0.orib0.mongodb.net/PMS?retryWrites=true&w=majority',{
     useNewUrlParser:true,
     useCreateIndex:true,
@@ -152,6 +153,7 @@ app.get('/dashboard/admin',Authorization,async(req,res)=>{
     })
 app.get('/signup/doctor',Authorization,async(req,res)=>{
     try{
+        doctorValidate(req.query) 
         const doctor=new User({
             role:'doctor',
             name:req.query.name,
@@ -164,8 +166,7 @@ app.get('/signup/doctor',Authorization,async(req,res)=>{
             timeTo:req.query.timeTo,
             consultancyFee:req.query.consultancyFee,
             consultancyDay:req.query.consultancyDay
-    })
-    doctorValidate(doctor)  
+    }) 
     const Doctor=await User.findOne({email:req.query.email})
     if(Doctor){
         throw new Error('User Already Exist')
@@ -183,6 +184,7 @@ app.get('/admin/doctor',Authorization,async(req,res)=>{
 })
  app.get('/add/patient',Authorization,async(req,res)=>{
         try{
+            patientValidate(req.query)
             const patient=new Patient({
                 name:req.query.name,
                 patientId:req.query.patientId,
@@ -194,7 +196,6 @@ app.get('/admin/doctor',Authorization,async(req,res)=>{
                 bloodGroup:req.query.bloodGroup,
                 birthDate:req.query.birthDate
             })
-            patientValidate(patient)
             const oldPatient=await Patient.findOne({email:req.query.email})
             if(oldPatient){
                 throw new Error('User Already Exist')
@@ -211,6 +212,7 @@ app.get('/admin/doctor',Authorization,async(req,res)=>{
 
 app.get('/signup/staff',Authorization,async(req,res)=>{
     try{
+        staffValidate(req.query)
         const staff=new User({
             role:'staff',
             name:req.query.name,
@@ -219,7 +221,6 @@ app.get('/signup/staff',Authorization,async(req,res)=>{
             address:req.query.address,
             phoneNumber:req.query.phoneNumber
         })
-        staffValidate(staff)
         const Staff=await User.findOne({email:req.query.email})
         if(Staff){
         throw new Error('User Already Exist')
@@ -285,9 +286,10 @@ app.get('/signup/staff',Authorization,async(req,res)=>{
         })
     })
     app.get('/doctor/update',Authorization,async(req,res)=>{
+        try{
             const id=req.query.id
-            const doctor=await User.findById(id) 
-            await User.findByIdAndUpdate(id,{
+            doctoreditValidate(req.query)
+            const doctor=await User.findByIdAndUpdate(id,{
                 password:req.query.password,
                 address:req.query.address,
                 phoneNumber:req.query.phoneNumber,
@@ -298,6 +300,9 @@ app.get('/signup/staff',Authorization,async(req,res)=>{
                 consultancyDay:req.query.consultancyDay
         })
         res.send({doctor})
+        }catch(error){
+            res.send({Error:error.message})
+        }  
     })
     app.get('/staff/edit',Authorization,async(req,res)=>{
         const id=req.query.id
@@ -306,16 +311,20 @@ app.get('/signup/staff',Authorization,async(req,res)=>{
         })
     })
     app.get('/staff/update',Authorization,async(req,res)=>{
+        try{
             const id=req.query.id
-            const staff=await User.findById(id)
-            await User.findByIdAndUpdate(id,{
+            staffeditValidate(req.query)
+            const staff=await User.findByIdAndUpdate(id,{
                 password:req.query.password,
                 address:req.query.address,
                 phoneNumber:req.query.phoneNumber
             })
             res.send({staff})
+        }catch(error){
+            res.send({Error:error.message})
+        }  
         })
-
+        
     app.get('/patient/edit',Authorization,async(req,res)=>{
         const id=req.query.id
         const patient=await Patient.findById(id)
@@ -323,7 +332,9 @@ app.get('/signup/staff',Authorization,async(req,res)=>{
         })
     })
     app.get('/patient/update',Authorization,async(req,res)=>{
-            const id=req.query.id
+        try{
+             const id=req.query.id
+            patienteditValidate(req.query)
             const patient=await Patient.findByIdAndUpdate(id,{
                 patientId:req.query.patientId,
                 address:req.query.address,
@@ -334,6 +345,9 @@ app.get('/signup/staff',Authorization,async(req,res)=>{
                 birthDate:req.query.birthDate
             })
             res.send({patient})
+        }catch(error){
+            res.send({Error:error.message})
+        }
     })
     app.get('/admit/edit',Authorization,async(req,res)=>{
         const id=req.query.id
@@ -341,7 +355,7 @@ app.get('/signup/staff',Authorization,async(req,res)=>{
         res.render('admitedit',{patient
         })
     })
-
+    
     
     app.get('/user/delete',Authorization,async(req,res)=>{
         const id=req.query.id

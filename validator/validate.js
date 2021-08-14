@@ -3,7 +3,7 @@ const patientValidate=(validate)=>{
     if(!validator.isAlpha(validate.name,'en-US',{ignore:'\s'})){
         throw new Error('Please enter a valid name')
     }
-    if(typeof validate.patientId!=='number'){
+    if(!validator.isNumeric(validate.patientId)){
         throw new Error('Please enter a valid patient ID')
     }
     if(!validator.isEmail(validate.email)){
@@ -12,13 +12,30 @@ const patientValidate=(validate)=>{
     if(!validator.isAlphanumeric(validate.address,'en-US',{ignore:'\s'})){
         throw new Error('Please enter a valid address')
     }
-    if(typeof validate.phoneNumber!=='number'){
+    if(!validator.isNumeric(validate.phoneNumber)){
         throw new Error('Please enter a valid phone number')
     }
-    if(Math.floor(Math.log10(Math.abs(validate.phoneNumber))) + 1<10){
+    if(validate.phoneNumber.length<10){
+        throw new Error('Please enter a phone number of atleast 10 digit')
+    }
+    if(!validator.isNumeric(validate.age)){
+        throw new Error('Please enter a valid age')
+    }
+}
+const patienteditValidate=(validate)=>{
+    if(!validator.isNumeric(validate.patientId)){
+        throw new Error('Please enter a valid patient ID')
+    }
+    if(!validator.isAlphanumeric(validate.address,'en-US',{ignore:'\s'})){
+        throw new Error('Please enter a valid address')
+    }
+    if(!validator.isNumeric(validate.phoneNumber)){
         throw new Error('Please enter a valid phone number')
     }
-    if(typeof validate.age!=='number'){
+    if(validate.phoneNumber.length<10){
+        throw new Error('Please enter a phone number of atleast 10 digit')
+    }
+    if(!validator.isNumeric(validate.age)){
         throw new Error('Please enter a valid age')
     }
 }
@@ -36,22 +53,52 @@ const doctorValidate=(validate)=>{
     if(!validator.isAlphanumeric(validate.address,'en-US',{ignore:'\s'})){
         throw new Error('Please enter a valid address')
     }
-    if(typeof validate.phoneNumber!=='number'){
+    if(!validator.isNumeric(validate.phoneNumber)){
         throw new Error('Please enter a valid phone number')
     }
-    if(Math.floor(Math.log10(Math.abs(validate.phoneNumber)))+1<10){
-        throw new Error('Please enter a valid phone number')
+    if(validate.phoneNumber.length<10){
+        throw new Error('Please enter a phone number of atleast 10 digit')
     }
     if(!validator.isAlpha(validate.department,'en-US',{ignore:'\s'})){
         throw new Error('Please enter a valid department')
     }
-    if(typeof validate.timeFrom!=='number'){
+    if(!validator.isNumeric(validate.timeFrom)){
         throw new Error('Please enter a valid time from')
     }
-    if(typeof validate.timeTo!=='number'){
+    if(!validator.isNumeric(validate.timeTo)){
         throw new Error('Please enter a valid time to')
     }
-    if(typeof validate.consultancyFee!=='number'){
+    if(!validator.isNumeric(validate.consultancyFee)){
+        throw new Error('Please enter a valid consultancy fee')
+    }
+    if(!validator.isAlpha(validate.consultancyDay,'en-US',{ignore:'\s'})){
+        throw new Error('Please enter a valid consultancy day')
+    }
+}
+const doctoreditValidate=(validate)=>{
+    if(!validator.isStrongPassword(validate.password,{minLength: 8, minLowercase: 1,minUppercase: 1, minNumbers: 1, minSymbols: 1})) 
+    {
+        throw new Error('Please enter a valid password')
+    }
+    if(!validator.isAlphanumeric(validate.address,'en-US',{ignore:'\s'})){
+        throw new Error('Please enter a valid address')
+    }
+    if(!validator.isNumeric(validate.phoneNumber)){
+        throw new Error('Please enter a valid phone number')
+    }
+    if(validate.phoneNumber.length<10){
+        throw new Error('Please enter a phone number of atleast 10 digit')
+    }
+    if(!validator.isAlpha(validate.department,'en-US',{ignore:'\s'})){
+        throw new Error('Please enter a valid department')
+    }
+    if(!validator.isNumeric(validate.timeFrom)){
+        throw new Error('Please enter a valid time from')
+    }
+    if(!validator.isNumeric(validate.timeTo)){
+        throw new Error('Please enter a valid time to')
+    }
+    if(!validator.isNumeric(validate.consultancyFee)){
         throw new Error('Please enter a valid consultancy fee')
     }
     if(!validator.isAlpha(validate.consultancyDay,'en-US',{ignore:'\s'})){
@@ -72,11 +119,26 @@ const staffValidate=(validate)=>{
     if(!validator.isAlphanumeric(validate.address,'en-US',{ignore:'\s'})){
         throw new Error('Please enter a valid address')
     }
-    if(typeof validate.phoneNumber!=='number'){
+    if(!validator.isNumeric(validate.phoneNumber)){
         throw new Error('Please enter a valid phone number')
     }
-    if(Math.floor(Math.log10(Math.abs(validate.phoneNumber)))+1<10){
+    if(validate.phoneNumber.length<10){
+        throw new Error('Please enter a phone number of atleast 10 digit')
+    }
+}
+const staffeditValidate=(validate)=>{
+    if(!validator.isStrongPassword(validate.password,{minLength: 8, minLowercase: 1,minUppercase: 1, minNumbers: 1, minSymbols: 1})) 
+    {
+        throw new Error('Please enter a valid password')
+    }
+    if(!validator.isAlphanumeric(validate.address,'en-US',{ignore:'\s'})){
+        throw new Error('Please enter a valid address')
+    }
+    if(!validator.isNumeric(validate.phoneNumber)){
         throw new Error('Please enter a valid phone number')
+    }
+    if(validate.phoneNumber.length<10){
+        throw new Error('Please enter a phone number of atleast 10 digit')
     }
 }
 const registrationValidate=(validate)=>{
@@ -89,14 +151,14 @@ const registrationValidate=(validate)=>{
      if(!validator.isAlphanumeric(validate.address,'en-US',{ignore:'\s'})){
         throw new Error('Please enter a valid address')
     }
-    if(typeof validate.phoneNumber!=='number'){
+    if(!validator.isNumeric(validate.phoneNumber)){
         throw new Error('Please enter a valid phone number')
     }
-    if(typeof validate.age!=='number'){
+    if(validate.phoneNumber.length<10){
+        throw new Error('Please enter a phone number of atleast 10 digit')
+    }
+    if(!validator.isNumeric(validate.age)){
         throw new Error('Please enter a valid age')
-    }
-    if(Math.floor(Math.log10(Math.abs(validate.phoneNumber))) + 1<10){
-        throw new Error('Please enter a valid phone number')
     }
 }
 const appointmentValidate=(validate)=>{
@@ -109,14 +171,14 @@ const appointmentValidate=(validate)=>{
      if(!validator.isAlphanumeric(validate.address,'en-US',{ignore:'\s'})){
         throw new Error('Please enter a valid address')
     }
-    if(typeof validate.phoneNumber!=='number'){
+    if(!validator.isNumeric(validate.phoneNumber)){
         throw new Error('Please enter a valid phone number')
     }
-    if(typeof validate.age!=='number'){
+    if(validate.phoneNumber.length<10){
+        throw new Error('Please enter a phone number of atleast 10 digit')
+    }
+    if(!validator.isNumeric(validate.age)){
         throw new Error('Please enter a valid age')
-    }
-    if(Math.floor(Math.log10(Math.abs(validate.phoneNumber))) + 1<10){
-        throw new Error('Please enter a valid phone number')
     }  
 }
 module.exports={
@@ -124,5 +186,8 @@ module.exports={
     doctorValidate,
     staffValidate,
     registrationValidate,
-    appointmentValidate
+    appointmentValidate,
+    doctoreditValidate,
+    patienteditValidate,
+    staffeditValidate
 }
