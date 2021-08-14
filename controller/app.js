@@ -333,7 +333,7 @@ app.get('/signup/staff',Authorization,async(req,res)=>{
     })
     app.get('/patient/update',Authorization,async(req,res)=>{
         try{
-             const id=req.query.id
+            const id=req.query.id
             patienteditValidate(req.query)
             const patient=await Patient.findByIdAndUpdate(id,{
                 patientId:req.query.patientId,
@@ -352,11 +352,9 @@ app.get('/signup/staff',Authorization,async(req,res)=>{
     app.get('/admit/edit',Authorization,async(req,res)=>{
         const id=req.query.id
         const admit=await Admit.findById(id)
-        res.render('admitedit',{patient
+        res.render('admitedit',{admit
         })
     })
-    
-    
     app.get('/user/delete',Authorization,async(req,res)=>{
         const id=req.query.id
         await User.findByIdAndDelete(id)
