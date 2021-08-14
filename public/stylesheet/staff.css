@@ -9,6 +9,20 @@ body {
     background-color: rgb(222, 222, 233);
     width: 1920px;
 }
+a {
+    padding: 40 px;
+    cursor: pointer;
+    text-decoration: red;
+    color: rgb(97, 89, 89);
+    margin-top: 5px;
+    display: inline-block;
+    padding: 5px 5px;
+    border-radius: 18px;
+    font-size: 30px;
+}
+button {
+    cursor: pointer;
+}
 form input {
     margin-top: 10px;
 }
@@ -56,16 +70,11 @@ form select {
     background-color: white;
     padding-right: 37px;
     margin-bottom: 90px;
+    padding-right: 42px;
     border-right: 0px;
 }
 
-.profile1 {
-    font-size: 20px;
-    background-color: white;
-    padding-right: 45px;
-    margin-bottom: 394px;
-    border-right: 0px;
-}
+
 
 .dashboardimage {
     width: 40px;
@@ -80,8 +89,8 @@ form select {
 }
 .dash1 {
     border-style: solid;
-    margin-left: 156px;
-    margin-top: -693px;
+    margin-left: 158px;
+    margin-top: -685px;
     border-left: 0px;
     border-width: 1px;
     padding-top: 150px;
@@ -189,9 +198,9 @@ form select {
 }
 .profilebar {
     border-style: solid;
-    margin-left: 155px;
+    margin-left: 158px;
     border-width: 1px;
-    margin-top: -694px;
+    margin-top: -685px;
 }
 
 .feed1 {
@@ -216,16 +225,17 @@ input::placeholder {
 input {
     width: 300px;
 }
-.Dlist2 {
+.Dlist2{
+    position: absolute;
     background-color: rgb(181, 188, 207);
-    padding-bottom: 0px;
-    margin-bottom: 0px;
-    padding-top: 0px;
     width: 200px;
     padding-left: 20px;
-    margin-left: 30px;
-    margin-top: -20px;
+    margin-left: 32px;
+    margin-top: -31px;
+    padding-top: 5px;
+    padding-bottom: 5px;
 }
+
 .update1 {
     margin-left: 200px;
     background-color: rgb(153, 224, 139);
@@ -240,7 +250,7 @@ input {
 .profile1 {
     font-size: 20px;
     background-color: white;
-    padding-right: 45px;
+    padding-right: 48px;
     margin-bottom: 394px;
     border-right: 0px;
 }
@@ -252,9 +262,9 @@ input {
 }
 .patientBar1 {
     border-style: solid;
-    margin-left: 156px;
+    margin-left: 158px;
     border-width: 1px;
-    margin-top: -694px;
+    margin-top: -685px;
     margin-bottom: 80px;
 }
 
@@ -273,7 +283,8 @@ input {
 .patientlist {
     counter-reset: serial-number;
     margin-top: 40px;
-    margin-left: 156px;
+    margin-left: 158px;
+    border-left: 0px;
 }
 
 .patientlist td:first-child:before {
@@ -358,17 +369,16 @@ td {
 }
 .admitbar {
     border-style: solid;
-    margin-left: 155px;
+    margin-left: 157px;
     border-width: 1px;
-    margin-top: -693px;
+    margin-top: -685px;
     border-left: 0px;
 }
 .dischargebar{
     border-style: solid;
-    margin-left: 155px;
+    margin-left: 157px;
     border-width: 1px;
-    margin-top: -693px;
-    border-left: 0px;
+    margin-top: -685px;
 }
 .admitList {
     padding-top: 10px;
@@ -407,7 +417,8 @@ td {
 .Admitlist {
     counter-reset: serial-number;
     margin-top: 80px;
-    margin-left: 156px;
+    margin-left: 158px;
+    border-left: 0px;
 }
 
 .Admitlist td:first-child:before {
@@ -445,7 +456,8 @@ td {
 .Dischargelist {
     counter-reset: serial-number;
     margin-top: 80px;
-    margin-left: 156px;
+    margin-left: 158px;
+    border-left: 0px;
 }
 
 .Dischargelist td:first-child:before {

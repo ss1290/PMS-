@@ -3,6 +3,9 @@ body {
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     margin: auto;
 }
+button {
+    cursor: pointer;
+}
 form input{
     margin-top:10px;
 }
@@ -95,6 +98,7 @@ form select{
     padding-right: 42px;
     margin-bottom: 90px;
     border-right: 0px;
+    padding-right: 44px;
 }
 .patient1{
     font-size:20px;
@@ -102,6 +106,7 @@ form select{
     padding-right: 37px;
     margin-bottom: 90px;
     border-right: 0px;
+    padding-right: 42px;
 }
 .staff1{
     font-size:20px;
@@ -109,11 +114,12 @@ form select{
     padding-right: 54px;
     margin-bottom: 90px;
     border-right: 0px;
+    padding-right: 56px;
 }
 .profile1{
     font-size:20px;
     background-color: white;
-    padding-right: 45px;
+    padding-right: 48px;
     margin-bottom: 152px;
     border-right: 0px;
 }
@@ -225,7 +231,7 @@ form select{
 .dash1 {
     border-style: solid;
     margin-left: 156px;
-    margin-top: -713px;
+    margin-top: -699px;
     border-left: 0px;
     border-width: 1px;
     padding-top: 150px;
@@ -246,33 +252,32 @@ form select{
     border-style: solid;
     margin-left: 156px;
     border-width: 1px;
-    margin-top: -712px;
+    margin-top: -699px;
 }
 .staffBar1{
     border-style: solid;
-    margin-left: 156px;
+    margin-left: 158px;
     border-width: 1px;
-    margin-top: -712px;
+    margin-top: -699px;
 }
 .admitbar{
     border-style: solid;
     margin-left: 157px;
     border-width: 1px;
-    margin-top: -712px;
+    margin-top: -699px;
     border-left: 0px;
 }
 .dischargebar{
     border-style: solid;
-    width: 670px;
     margin-left: 156px;
     border-width: 1px;
-    margin-top: -712px;
+    margin-top: -699px;
 }
 .profilebar{
     border-style: solid;
     margin-left: -144px;
     border-width: 1px;
-    margin-top: -712px;
+    margin-top: -699px;
     margin-bottom:394px ;
 }
 .appointmentbar{
@@ -292,9 +297,9 @@ form select{
 
 .patientBar1{
     border-style: solid;
-    margin-left: 156px;
+    margin-left: 158px;
     border-width: 1px;
-    margin-top: -712px;
+    margin-top: -699px;
 }
 .patientBar2 {
     border-style: solid;
@@ -337,14 +342,14 @@ form select{
     border-bottom: 0px;
 }
 .Dlist2 {
+    position: absolute;
     background-color: rgb(181, 188, 207);
-    padding-bottom: 0px;
-    margin-bottom: 0px;
-    padding-top: 0px;
     width: 200px;
     padding-left: 20px;
-    margin-left: 30px;
-    margin-top: -20px;
+    margin-left: 32px;
+    margin-top: -31px;
+    padding-top: 5px;
+    padding-bottom: 5px;
 }
 
 .Dadd1{
@@ -440,8 +445,9 @@ background-color: white;
 }
 .doctorlist {
     counter-reset: serial-number;
-    margin-top: 20px;
-    margin-left: 155px;
+    margin-top: 80px;
+    margin-left: 157px;
+    border-left: 0px;
 }
 .doctorlist td:first-child:before {
     counter-increment: serial-number;
@@ -482,8 +488,9 @@ label{
 }
 .stafflist {
     counter-reset: serial-number;
-    margin-top: 40px;
-    margin-left: 156px;
+    margin-top: 80px;
+    margin-left: 158px;
+    border-left: 0px;
 }
 
 .stafflist td:first-child:before {
@@ -512,7 +519,8 @@ label{
 .patientlist {
     counter-reset: serial-number;
     margin-top: 40px;
-    margin-left: 156px;
+    margin-left: 158px;
+    border-left: 0px;
 }
 
 .patientlist td:first-child:before {
@@ -522,7 +530,8 @@ label{
 .Admitlist {
     counter-reset: serial-number;
     margin-top: 80px;
-    margin-left: 156px;
+    margin-left: 158px;
+    border-left:0px ;
 }
 
 .Admitlist td:first-child:before {
@@ -532,7 +541,8 @@ label{
 .Dischargelist {
     counter-reset: serial-number;
     margin-top: 80px;
-    margin-left: 156px;
+    margin-left: 158px;
+    border-left: 0px;
 }
 
 .Dischargelist td:first-child:before {
@@ -657,4 +667,15 @@ label{
 .edit{
     margin-left: 300px;
     margin-top: -450px;
+}
+a{
+    padding: 40 px;
+    cursor: pointer;
+    text-decoration: red;
+    color: rgb(97, 89, 89);
+    margin-top: 5px;
+    display: inline-block;
+    padding: 5px 5px;
+    border-radius: 18px;
+    font-size: 30px;
 }
