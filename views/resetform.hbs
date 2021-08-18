@@ -7,7 +7,7 @@
         <div class="resetForm">
             <p class="ResetPassword">Reset Password</p>
             <form id="resetForm">
-                <input id="email" placeholder="email">
+                <input id="email" placeholder="email" value="{{email}}" disabled="disabled">
                 <br>
                 <input id="newPassword" placeholder="New Password">
                 <br>
@@ -15,6 +15,7 @@
                 <br>
                 <button class="resetbutton">Reset</button>
             </form>
+            <p id="message" class="message"></p>
         </div>
         <script src="/js/resetform.js"></script>
     </body>

@@ -35,6 +35,10 @@
                     <input type=image class="feed1" src="/img/feed.png">
                     <p class="Dlist2">View Appointments</p>
                 </div>
+                <div class="searchbox1" id="searchbox1">
+                    <span class="fas fa-search" style="position:absolute;margin-top:5px;margin-left:5px;"></span>
+                    <input type="text" placeholder="search" id="appointmentsearch" style="padding-left:50px;">
+                </div>
                 <table class="Appointmentlist" id="Appointmentlist">
                     <thead>
                         <tr>
@@ -51,6 +55,7 @@
                 </table>
             </div>
         </div>
+        <button class="next" id="edit2" onclick="next()">next</button>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/qs/6.6.0/qs.min.js"></script>
         <script>
             function showDoctor() {

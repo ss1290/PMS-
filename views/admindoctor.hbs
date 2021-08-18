@@ -55,7 +55,7 @@
             <button class="next" id="edit2" onclick="next()">next</button>
             <div class="addDoctor" id="addDoctor" style="display:none">
                 <p class="add1">Add Doctor</p>
-                <form id="DoctorForm">
+                <form id="DoctorForm" class="DoctorForm">
                     <label>Name</label>
                     <input type="text" id="Name" required>
                     <br>
@@ -74,18 +74,20 @@
                     <label>Department</label>
                     <input type="text" id="Department" required>
                     <br>
-                    <label>Time From</label>
-                    <input type="text" id="TimeFrom" required>
-                    <br>
-                    <label>Time To</label>
-                    <input type="text" id="TimeTo" required>
-                    <br>
-                    <label>Consultancy Fee</label>
-                    <input type="text" id="ConsultancyFee" required>
-                    <br>
-                    <label>Consultancy Day</label>
-                    <input type="text" id="ConsultancyDay" required>
-                    <br>
+                    <div class="nextline">
+                        <label>Time From</label>
+                        <input type="text" id="TimeFrom" required>
+                        <br>
+                        <label>Time To</label>
+                        <input type="text" id="TimeTo" required>
+                        <br>
+                        <label>Consultancy Fee</label>
+                        <input type="text" id="ConsultancyFee" required>
+                        <br>
+                        <label>Consultancy Day</label>
+                        <input type="text" id="ConsultancyDay" required>
+                        <br>
+                    </div>
                     <button class="adddoctorbutton">Submit</button>
                 </form>
             </div>

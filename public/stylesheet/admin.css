@@ -1,8 +1,8 @@
 body {
     display: table;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    margin: 0 auto;
-    float: none ;
+    margin: auto;
+    height:fit-content;
 }
 button {
     cursor: pointer;
@@ -121,7 +121,6 @@ form select{
     font-size:20px;
     background-color: white;
     padding-right: 48px;
-    margin-bottom: 152px;
     border-right: 0px;
 }
 
@@ -141,14 +140,13 @@ form select{
     width: 24px
 }
 .navigationbar {
-    position: static;
     border-style: solid;
     width: 156px;
     padding-top: 0px;
     margin-top: 60px;
-    border-top: 0px;
     border-width: 1px;
-    border-bottom:0px;
+    border-bottom:1px;
+    height: 698px;
 }
 .admit1{
     margin-left: 100px;
@@ -231,13 +229,13 @@ form select{
 }
 .dash1 {
     border-style: solid;
-    margin-left: 156px;
+    margin-left: 157px;
     margin-top: -699px;
     border-left: 0px;
     border-width: 1px;
     padding-top: 150px;
-    padding-bottom: 148px;
     border-bottom: 0px;
+    border-right:0px;
 }
 .dash2 {
     border-style: solid;
@@ -281,19 +279,11 @@ form select{
     margin-top: -699px;
     margin-bottom:394px ;
 }
-.appointmentbar{
-    border-style: solid;
-    width: 670px;
-    margin-left:152px;
-    border-width: 1px;
-    margin-top: -573px;
-}
 .appointmentBar {
-    border-style: solid;
-    width: 670px;
-    margin-left: 155px;
+    border-style: solid;    
+    margin-left: 157px;
     border-width: 1px;
-    margin-top: -573px;
+    margin-top: -699px;
 }
 
 .patientBar1{
@@ -455,7 +445,6 @@ background-color: white;
     content: counter(serial-number);
 }
 .add1{
-    position: absolute;
     background-color:rgb(235, 229, 146);
     border: solid;
     border-width: 1px;
@@ -467,6 +456,7 @@ background-color: white;
     border-top: 0px;
     margin-left: -144px;
     margin-top: -60px;
+    margin-bottom: 200px;
 }
 .addDoctor{
     margin-left: 300px;
@@ -553,7 +543,7 @@ label{
 .Appointmentlist {
     counter-reset: serial-number;
     margin-top: 80px;
-    margin-left: 156px;
+    margin-left: 157px;
 }
 
 .Appointmentlist td:first-child:before {
@@ -581,15 +571,17 @@ label{
     margin-top: 100px;
 }
 .adddoctorbutton{
-    margin-left: 200px;
+    margin-left: 400px;
     background-color: rgb(153, 224, 139);
     border-style:solid;
     border-radius: 18px;
-    padding-right: 30px;
-    padding-left: 30px;
+    padding-right: 40px;
+    padding-left: 40px;
     border-width: 1px;
     margin-bottom: 40px;
     margin-top: 100px;
+    padding-top: 10px;
+    padding-bottom: 10px;
 }
 .edit2{
     margin-left: 200px;
@@ -614,27 +606,31 @@ label{
     margin-top: 100px;
 }
 .addpatientbutton {
-    margin-left: 200px;
+    margin-left: 400px;
     background-color: rgb(153, 224, 139);
-    border-style: solid;
+    border-style:solid;
     border-radius: 18px;
-    padding-right: 30px;
-    padding-left: 30px;
+    padding-right: 40px;
+    padding-left: 40px;
     border-width: 1px;
     margin-bottom: 40px;
     margin-top: 100px;
+    padding-top: 10px;
+    padding-bottom: 10px;
 
 }
 .addstaffbutton {
     margin-left: 200px;
     background-color: rgb(153, 224, 139);
-    border-style: solid;
+    border-style:solid;
     border-radius: 18px;
-    padding-right: 30px;
-    padding-left: 30px;
+    padding-right: 40px;
+    padding-left: 40px;
     border-width: 1px;
     margin-bottom: 40px;
     margin-top: 100px;
+    padding-top: 10px;
+    padding-bottom: 10px;
 }
 .AdmitButton{
     margin-left: 100px;
@@ -649,7 +645,7 @@ label{
 }
 .cancelbutton{
     position: absolute;
-    margin-left: 210px;
+    margin-left: 260px;
     background-color: rgb(153, 224, 139);
     border-style: solid;
     border-radius: 18px;
@@ -657,7 +653,7 @@ label{
     padding-left: 30px;
     border-width: 1px;
     margin-bottom: 40px;
-    margin-top: -65px;
+    margin-top: -61px;
 }
 .message{
     margin-left: 200px;
@@ -679,4 +675,8 @@ a{
     padding: 5px 5px;
     border-radius: 18px;
     font-size: 30px;
+}
+.nextline{
+    margin-left: 500px;
+    margin-top: -160px;
 }

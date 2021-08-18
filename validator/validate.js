@@ -181,6 +181,14 @@ const appointmentValidate=(validate)=>{
         throw new Error('Please enter a valid age')
     }  
 }
+const dischargeValidate=(validate)=>{
+    if(!validator.isNumeric(validate.bedDays)){
+        throw new Error('Please enter a valid bed Days')
+    }
+     if(!validator.isNumeric(validate.charges)){
+        throw new Error('Please enter a valid charges')
+    }
+}
 module.exports={
     patientValidate,
     doctorValidate,
@@ -189,5 +197,6 @@ module.exports={
     appointmentValidate,
     doctoreditValidate,
     patienteditValidate,
-    staffeditValidate
+    staffeditValidate,
+    dischargeValidate
 }

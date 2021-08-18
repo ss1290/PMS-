@@ -10,8 +10,8 @@ const Appointment=require('../models/appointment')
 const Authorization=require('../middleware/auth')
 const {sendForgotEmail}=require('../email/forgotPassword')
 const validator =require('validator')
-const {patientValidate,doctorValidate, staffValidate,registrationValidate,appointmentValidate,doctoreditValidate,patienteditValidate,staffeditValidate}=require('../validator/validate')
-mongoose.connect('mongodb+srv://Shashank:Sonu123@@cluster0.orib0.mongodb.net/PMS?retryWrites=true&w=majority',{
+const {patientValidate,doctorValidate, staffValidate,registrationValidate,appointmentValidate,doctoreditValidate,patienteditValidate,staffeditValidate,dischargeValidate}=require('../validator/validate')
+mongoose.connect('mongodb+srv://Shashank:Sonu123@cluster0.orib0.mongodb.net/PMS?retryWrites=true&w=majority',{
     useNewUrlParser:true,
     useCreateIndex:true,
     useUnifiedTopology:true,
@@ -121,6 +121,7 @@ app.get('/dashboard/admin',Authorization,async(req,res)=>{
                 bedDays:req.query.bedDays,
                 charges:req.query.charges
             })
+            dischargeValidate(req.query)
             await discharge.save()
             res.send({discharge})
         }catch(error){
@@ -146,7 +147,7 @@ app.get('/dashboard/admin',Authorization,async(req,res)=>{
     app.get('/admin/appointments',Authorization,async(req,res)=>{
         res.render('adminappointments',{})
     })
-    app.get('/patient/appointment,Authorization',async(req,res)=>{
+    app.get('/patient/appointment',Authorization,async(req,res)=>{
         const page=parseInt(req.query.page, 10) || 0
         const Appointments=await Appointment.find({}).skip(page*10).limit(10)
         res.send({Appointments})
@@ -350,16 +351,152 @@ app.get('/signup/staff',Authorization,async(req,res)=>{
         }
     })
     app.get('/admit/edit',Authorization,async(req,res)=>{
+        var dtToday = new Date();
+        var month = dtToday.getMonth() + 1;
+        var day = dtToday.getDate();
+        var year = dtToday.getFullYear();
+        if(month < 10)
+        month = '0' + month.toString();
+        if(day < 10)
+        day = '0' + day.toString();
+        var minDate = year + '-' + month + '-' + day; 
         const id=req.query.id
         const admit=await Admit.findById(id)
-        res.render('admitedit',{admit
-        })
+        const doctor=await User.find({role:'doctor'})
+        const patient=await Patient.find({})
+        res.render('admitedit',{admit,doctor,patient,minDate})
+    })
+    app.get('/admit/update',Authorization,async(req,res)=>{
+        try{
+            const patient=await Patient.findOne({name:req.query.name,patientId:req.query.patientId})
+            if(!patient){
+                throw new Error('No Patient Registered with this name and Id')
+            }
+            const doctor=await User.findOne({name:req.query.doctorname,department:req.query.department})
+            if(!doctor){
+                throw new Error('No Doctor available with given name in this department')
+            }
+            const id=req.query.id
+            const admit=await Admit.findByIdAndUpdate(id,{
+                name:req.query.name,
+                patientId:req.query.patientId,
+                doctor:req.query.doctorname,
+                department:req.query.department,
+                date:req.query.date,
+                patientWard:req.query.patientWard,
+                patientBed:req.query.patientBed
+            })
+            res.send({admit})
+        }catch(error){
+            res.send({Error:error.message})
+        }
+    })
+    app.get('/discharge/edit',Authorization,async(req,res)=>{
+        var dtToday = new Date();
+        var month = dtToday.getMonth() + 1;
+        var day = dtToday.getDate();
+        var year = dtToday.getFullYear();
+        if(month < 10)
+        month = '0' + month.toString();
+        if(day < 10)
+        day = '0' + day.toString();
+        var minDate = year + '-' + month + '-' + day; 
+        const id=req.query.id
+        const discharge=await Discharge.findById(id)
+        const admits=await Admit.find({})
+        res.render('dischargedit',{discharge,minDate,admits})
+    })
+    app.get('/discharge/update',Authorization,async(req,res)=>{
+        try{
+            dischargeValidate(req.query)
+            const patient=await Patient.findOne({name:req.query.name,patientId:req.query.patientId})
+            if(!patient){
+                throw new Error('No Patient Registered with this name and Id')
+            }
+            const doctor=await User.findOne({name:req.query.doctorname,department:req.query.department})
+            if(!doctor){
+                throw new Error('No Doctor available with given name in this department')
+            }
+            const admit=await Admit.findOne({patientWard:req.query.patientWard,patientBed:req.query.patientBed})
+            if(!admit){
+                throw new Error('No Patient Admitted with this name in given ward and bed')
+            }
+            const id=req.query.id
+            const discharge=await Discharge.findByIdAndUpdate(id,{
+                name:req.query.name,
+                patientId:req.query.patientId,
+                doctor:req.query.doctorname,
+                department:req.query.department,
+                date:req.query.date,
+                patientWard:req.query.patientWard,
+                patientBed:req.query.patientBed,
+                bedDays:req.query.bedDays,
+                charges:req.query.charges
+            })
+            res.send({discharge})
+        }catch(error){
+            res.send({Error:error.message})
+        }
+    })
+    app.get('/appointment/edit',Authorization,async(req,res)=>{
+        const id=req.query.id
+        const appointment=await Appointment.findById(id)
+        var dtToday = new Date();
+        var month = dtToday.getMonth() + 1;
+        var day = dtToday.getDate();
+        var year = dtToday.getFullYear();
+        if(month < 10)
+        month = '0' + month.toString();
+        if(day < 10)
+        day = '0' + day.toString();
+        var minDate = year + '-' + month + '-' + day; 
+        const doctor=await User.find({role:'doctor'})
+        res.render('editappointment',{appointment,doctor,minDate})
+    })
+    app.get('/appointment/update',Authorization,async(req,res)=>{
+        try{
+            const id=req.query.id
+            registrationValidate(req.query)
+            const doctor=await User.findOne({name:req.query.doctor,department:req.query.department})
+            if(!doctor){
+                throw new Error('No Doctor available with given name in this department')
+            }
+            const patient=await Patient.findOne({
+                name:req.query.name,
+                email:req.query.email
+            })
+            if(patient){
+                throw new Error('Patient already registered')
+            }
+            const appointment=await Appointment.findByIdAndUpdate(id,{
+                doctor:req.query.doctor,
+                department:req.query.department,
+                date:req.query.date,
+                time:req.query.time,
+                name:req.query.name,
+                email:req.query.email,
+                address:req.query.address,
+                phoneNumber:req.query.phoneNumber,
+                age:req.query.age,
+                gender:req.query.gender,
+                bloodGroup:req.query.bloodGroup
+            })
+            res.send({appointment})
+        }catch(error){
+            res.send({Error:error.message})
+        }
     })
     app.get('/user/delete',Authorization,async(req,res)=>{
         const id=req.query.id
         await User.findByIdAndDelete(id)
         res.redirect('back')
     })
+     app.get('/appointment/delete',Authorization,async(req,res)=>{
+        const id=req.query.id
+        await Appointment.findByIdAndDelete(id)
+        res.redirect('back')
+    })
+
      app.get('/patient/delete',Authorization,async(req,res)=>{
         var id=req.query.id
         await Patient.findByIdAndDelete(id)
@@ -394,7 +531,7 @@ app.get('/signup/staff',Authorization,async(req,res)=>{
         res.send({Discharges})
     })
     
-   
+
 
 
 
@@ -484,6 +621,7 @@ app.get('/staff/admit',Authorization,async(req,res)=>{
     })
     app.get('/patient/registration',Authorization,async(req,res)=>{
         try{
+            registrationValidate(req.query)
             const doctor=await User.findOne({name:req.query.doctor,department:req.query.department})
             if(!doctor){
                 throw new Error('No Doctor available with given name in this department')
@@ -508,7 +646,6 @@ app.get('/staff/admit',Authorization,async(req,res)=>{
                 gender:req.query.gender,
                 bloodGroup:req.query.bloodGroup
         })
-        registrationValidate(registration)
         await registration.save()
         res.send({registration})
         }catch(error){
@@ -531,6 +668,7 @@ app.get('/staff/admit',Authorization,async(req,res)=>{
     })
     app.get('/patient/appointment',Authorization,async(req,res)=>{
         try{
+            appointmentValidate(req.query)
             const doctor=await User.findOne({name:req.query.doctor,department:req.query.department})
             if(!doctor){
                 throw new Error('No Doctor available with given name in this department')
@@ -548,7 +686,6 @@ app.get('/staff/admit',Authorization,async(req,res)=>{
                 gender:req.query.gender,
                 bloodGroup:req.query.bloodGroup
             })
-        appointmentValidate(appointment)
         await appointment.save()
         res.send({appointment})
         }catch(error){
@@ -563,12 +700,12 @@ app.get('/staff/admit',Authorization,async(req,res)=>{
     app.get('/forgot',async(req,res)=>{
         try{
             const user=await User.findOne({email:req.query.email})
-            const link='http://localhost:3000/resetform'
+            const link=`http://localhost:3000/resetform?email=${req.query.email}`
             if(!user){
-                throw new Error('Sorry user is not registered.Please try Again')
+                throw new Error('Sorry user is not registered.Please try Again!')
             }
             sendForgotEmail(req.query.email,link)
-            res.send({user,link})
+            res.send({user})
         }catch(error){
             res.send({Error:error.message})
         }
@@ -577,7 +714,8 @@ app.get('/staff/admit',Authorization,async(req,res)=>{
         res.render('forgotPassword',{})
     })
     app.get('/resetform',async(req,res)=>{
-        res.render('resetform',{})
+        const email=req.query.email
+        res.render('resetform',{email})
     })
     app.get('/success',async(req,res)=>{
         const email=req.query.email
@@ -585,14 +723,13 @@ app.get('/staff/admit',Authorization,async(req,res)=>{
     })
     app.get('/updatePassword',async(req,res)=>{
         try{
-            const user=await User.findOne({email:req.query.email})
-            if(!user){
-                throw new Error('No user found with associated email id')
-            }
             if(req.query.confirmpassword!==req.query.password){
                 throw new Error('Confirm password and New password should be same')
             }
-            await User.findOneAndUpdate({email:req.query.email},{password:req.query.password})
+             if(!validator.isStrongPassword(req.query.password,{minLength: 8, minLowercase: 1,minUppercase: 1, minNumbers: 1, minSymbols: 1})){
+                throw new Error('Please enter a valid password')
+            }
+            const user=await User.findOneAndUpdate({email:req.query.email},{password:req.query.password})
             res.send({user})
         }catch(error){
             res.send({Error:error.message})
