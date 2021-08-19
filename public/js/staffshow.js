@@ -6,7 +6,7 @@ var pageNumber=( Qs.parse(location.search, { ignoreQueryPrefix: true }).page)
 fetch(`/staff/show?token=${token}&page=${page}`).then((response)=>{
     response.json().then((data)=>{
         for(let i=0;i<data.staffs.length;i++){
-            list2.insertAdjacentHTML("beforeend",`<td></td>
+            list2.insertAdjacentHTML("beforeend",`<tr><td></td>
                         <td >${data.staffs[i].name}</td>
                         <td>${data.staffs[i].email}</td>
                         <td>${data.staffs[i].address}</td>
@@ -15,11 +15,12 @@ fetch(`/staff/show?token=${token}&page=${page}`).then((response)=>{
                         </tr>
                         `)
                     }
-                        tr = list2.getElementsByTagName("tr");
-                         if(tr.length>10){
-                        document.getElementById('edit2').style.display=""
-                    }else if(tr.length<10){
+                    tr = list2.getElementsByTagName("tr");
+                    if(tr.length<20){
                         document.getElementById('edit2').style.display="none"
+                    }
+                    else if(tr.length==20){
+                        document.getElementById('edit2').style.display=""
                     }
                     search.onkeyup=function(){
                         var filter, table, tr, td, i, txtValue;

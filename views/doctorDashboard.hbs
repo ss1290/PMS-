@@ -28,7 +28,7 @@
         <div class="dash1" id="dash1">
             <div class="appointments1">
                 <input type=image class="appointmentimage" src="/img/appointments.jpg">
-                <button class="appointment-button1" onclick="viewAppointment()">View Appointments</button>
+                <button class="appointment-button1" onclick="showAppointments()">View Appointments</button>
             </div>
         </div>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/qs/6.6.0/qs.min.js"></script>
@@ -48,6 +48,12 @@
             function showPatient() {
                 var { token } = Qs.parse(location.search, { ignoreQueryPrefix: true })
                 location.href = `/doctor/patient?&token=${token}&page=${0}`
+            }
+        </script>
+        <script>
+            function showAppointments() {
+                var { token } = Qs.parse(location.search, { ignoreQueryPrefix: true })
+                location.href = `/doctor/appointments?&token=${token}&page=${0}`
             }
         </script>
         <script src="/js/logout.js"></script>

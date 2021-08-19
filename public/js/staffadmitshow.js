@@ -14,9 +14,9 @@ fetch(`/admit/show?token=${token}&page=${page}`).then((response)=>{
                         `) 
                     }
                     tr = list4.getElementsByTagName("tr");
-                    if(tr.length>10){
+                    if(tr.length<20){
                         document.getElementById('edit2').style.display=""
-                    }else if(tr.length<10){
+                    }else if(tr.length==20){
                         document.getElementById('edit2').style.display="none"
                     }
                     search.onkeyup=function(){

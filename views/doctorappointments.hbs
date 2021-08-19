@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" href="/stylesheet/doctor.css">
+    <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+
+<body>
+    <div class="heading1">
+        <h1 class="heading" style="font-size:50px;"><span class="fas fa-plus"
+                style="font-size:40px;color:rgb(142, 142, 179);border-style:solid;border-radius:100%;padding:10px;border-width:7px;"></span>&ensp;
+            PMS</h1>
+        <button class="logoutButton" onclick="logout()"><span class="fas fa-power-off"></span>&ensp;Logout</button>
+    </div>
+    <h1 class="heading2" id="heading2">Appointment Details</h1>
+    <div class="navigationbar">
+        <button class="dashboard1" onclick="dboard1()"><span><input type=image class="dashboardimage"
+                    src="/img/dashboard.png"></span></span>&nbsp;Dashboard</button>
+        <br>
+        <button class="patient1" onclick="showPatient()"><span><input type=image class="patientimage"
+                    src="/img/patient.png"></span>&emsp;Patient</button>
+        <br>
+        <button class="profile1" onclick="showProfile()"><span><input type=image class="profileimage"
+                    src="/img/profile.png"></span>&emsp;Profile</button>
+    </div>
+    <div id="viewAppointments" class="viewAppointments">
+        <div class="appointmentBar">
+            <input type=image class="feed1" src="/img/feed.png">
+            <p class="Dlist2">View Appointments</p>
+        </div>
+        <div class="searchbox1" id="searchbox1">
+            <span class="fas fa-search" style="position:absolute;margin-top:5px;margin-left:5px;"></span>
+            <input type="text" placeholder="search" id="appointmentsearch" style="padding-left:50px;">
+        </div>
+        <table class="Appointmentlist" id="Appointmentlist">
+            <thead>
+                <tr>
+                    <th>S.No.</th>
+                    <th>Date</th>
+                    <th>Time</th>
+                    <th>Doctor Name</th>
+                    <th>Patient Name</th>
+                </tr>
+            </thead>
+            <tbody id="list6">
+            </tbody>
+        </table>
+    </div>
+    </div>
+    <button class="next" id="edit2" onclick="next()">next</button>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qs/6.6.0/qs.min.js"></script>
+    <script>
+        function dboard1() {
+            var { token } = Qs.parse(location.search, { ignoreQueryPrefix: true })
+            location.href = `/dashboard/admin?&token=${token}`
+        }
+    </script>
+
+    <script>
+        function showPatient() {
+            var { token } = Qs.parse(location.search, { ignoreQueryPrefix: true })
+            location.href = `/admin/patient?&token=${token}&page=${0}`
+        }
+    </script>
+    <script>
+        function showProfile() {
+            var { token } = Qs.parse(location.search, { ignoreQueryPrefix: true })
+            location.href = `/adminprofile?&token=${token}`
+        }
+    </script>
+    <script src="/js/logout.js"></script>
+    <script src="/js/doctorappointment.js"> </script>
+</body>
+
+</html>

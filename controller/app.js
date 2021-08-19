@@ -147,9 +147,12 @@ app.get('/dashboard/admin',Authorization,async(req,res)=>{
     app.get('/admin/appointments',Authorization,async(req,res)=>{
         res.render('adminappointments',{})
     })
+    app.get('/doctor/appointments',Authorization,async(req,res)=>{
+        res.render('doctorappointments',{})
+    })
     app.get('/patient/appointment',Authorization,async(req,res)=>{
-        const page=parseInt(req.query.page, 10) || 0
-        const Appointments=await Appointment.find({}).skip(page*10).limit(10)
+        const page=parseInt(req.query.page, 20) || 0
+        const Appointments=await Appointment.find({}).skip(page*20).limit(20)
         res.send({Appointments})
     })
 app.get('/signup/doctor',Authorization,async(req,res)=>{
@@ -503,31 +506,31 @@ app.get('/signup/staff',Authorization,async(req,res)=>{
         res.redirect('back')
     })
     app.get('/doctor/show',Authorization,async(req,res)=>{
-        const page=parseInt(req.query.page, 10) || 0
-        const doctors=await User.find({role:'doctor'}).skip(page*10).limit(10)
+        const page=parseInt(req.query.page, 20) || 0
+        const doctors=await User.find({role:'doctor'}).skip(page*20).limit(20)
         res.send({doctors})
     })
     app.get('/staff/show',Authorization,async(req,res)=>{
-        const page=parseInt(req.query.page, 10) || 0
-        const staffs=await User.find({role:'staff'}).skip(page*10).limit(10)
+        const page=parseInt(req.query.page, 20) || 0
+        const staffs=await User.find({role:'staff'}).skip(page*20).limit(20)
         res.send({staffs})
     })
     app.get('/patient/show',Authorization,async(req,res)=>{
-        const page=parseInt(req.query.page, 10) || 0
-        const patients=await Patient.find({}).skip(page*10).limit(10)
+        const page=parseInt(req.query.page, 20) || 0
+        const patients=await Patient.find({}).skip(page*20).limit(20)
         res.send({patients})
     })
     app.get('/patientshow',Authorization,async(req,res)=>{
         res.render('patientdetails',{})
     })
     app.get('/admit/show',Authorization,async(req,res)=>{
-        const page=parseInt(req.query.page, 10) || 0
-        const Admits=await Admit.find({}).skip(page*10).limit(10)
+        const page=parseInt(req.query.page, 20) || 0
+        const Admits=await Admit.find({}).skip(page*20).limit(20)
         res.send({Admits})
     })
       app.get('/discharge/show',Authorization,async(req,res)=>{
-        const page=parseInt(req.query.page, 10) || 0
-        const Discharges=await Discharge.find({}).skip(page*10).limit(10)
+        const page=parseInt(req.query.page, 20) || 0
+        const Discharges=await Discharge.find({}).skip(page*20).limit(20)
         res.send({Discharges})
     })
     
@@ -550,6 +553,7 @@ app.get('/signup/staff',Authorization,async(req,res)=>{
     app.get('/doctor/patient',Authorization,async(req,res)=>{
     res.render('doctorpatient',{})
 })
+
     
     //Staff Router
     app.get('/dashboard/staff',Authorization,async(req,res)=>{

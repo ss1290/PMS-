@@ -45,14 +45,20 @@ button {
     padding-right: 25px;
 }
 .navigationbar {
-    position: static;
     border-style: solid;
     width: 156px;
     padding-top: 0px;
     margin-top: 60px;
-    border-top: 0px;
     border-width: 1px;
-    border-bottom: 0px;
+    border-bottom: 1px;
+    height: 698px;
+}
+.appointmentBar {
+    border-style: solid;
+    margin-left: 157px;
+    border-width: 1px;
+    margin-top: -698px;
+    margin-bottom: 40px;
 }
 .dashboard1 {
     font-size: 20px;
@@ -60,7 +66,6 @@ button {
     margin-bottom: 90px;
     border-right: 0px;
     padding-top: 0px;
-    padding-right: 42px;
 }
 .patient1 {
     font-size: 20px;
@@ -74,7 +79,6 @@ button {
     font-size: 20px;
     background-color: white;
     padding-right: 45px;
-    margin-bottom: 394px;
     border-right: 0px;
     padding-right: 42px;
 }
@@ -90,7 +94,7 @@ button {
 .dash1 {
     border-style: solid;
     margin-left: 156px;
-    margin-top: -713px;
+    margin-top: -698px;
     border-left: 0px;
     border-width: 1px;
     padding-top: 150px;
@@ -141,7 +145,7 @@ button {
     border-style: solid;
     margin-left: 152px;
     border-width: 1px;
-    margin-top: -712px;
+    margin-top: -698px;
 }
 .feed1 {
     margin: auto;
@@ -153,11 +157,12 @@ button {
     background-color: rgb(181, 188, 207);
     padding-bottom: 0px;
     margin-bottom: 0px;
-    padding-top: 0px;
+    padding-top: 5px;
+    padding-bottom: 5px;
     width: 200px;
     padding-left: 20px;
     margin-left: 30px;
-    margin-top: -20px;
+    margin-top: -31px;
 }
 .profile {
     margin-top: 100px;
@@ -204,7 +209,7 @@ input{
     border-style: solid;
     margin-left: 156px;
     border-width: 1px;
-    margin-top: -712px;
+    margin-top: -698px;
     margin-bottom: 80px;
 }
 .searchbox1 {
@@ -215,7 +220,7 @@ input{
 .patientlist {
     counter-reset: serial-number;
     margin-top: 40px;
-    margin-left: 156px;
+    margin-left: 157px;
 }
 
 .patientlist td:first-child:before {
@@ -295,4 +300,14 @@ td {
     margin-bottom: 40px;
     margin-top: 100px;
 
+}
+.Appointmentlist {
+    counter-reset: serial-number;
+    margin-top: 80px;
+    margin-left: 157px;
+}
+
+.Appointmentlist td:first-child:before {
+    counter-increment: serial-number;
+    content: counter(serial-number);
 }

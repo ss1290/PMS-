@@ -14,10 +14,10 @@ fetch(`/discharge/show?token=${token}`).then((response)=>{
                         `)
                         }
                         tr = list5.getElementsByTagName("tr");
-                        if(tr.length>10){
-                        document.getElementById('edit2').style.display=""
-                     }else if(tr.length<10){
+                        if(tr.length<20){
                         document.getElementById('edit2').style.display="none"
+                     }else if(tr.length==20){
+                        document.getElementById('edit2').style.display=""
                     }
                         search.onkeyup=function(){
                         var filter, table, tr, td, i, txtValue;
