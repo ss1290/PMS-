@@ -2,7 +2,7 @@ body {
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     margin: auto;
     display: inline-block;
-    overflow-x: hidden;
+    width: 1920px;
 }
 button {
     cursor: pointer;
@@ -26,13 +26,12 @@ form select{
     font-size: 25px;
 }
 .heading{
-    margin-left: 60px;
+    margin-left: 40px;
 }
 .heading1{
     border-style:solid;
     border-width: 1px;
     background-color:rgb(222, 222, 233);
-    width: 2080px;
 }
 .logoutButton{
     position: absolute;
@@ -302,7 +301,6 @@ form select{
 }
 .Dlist2 {
     background-color: rgb(181, 188, 207);
-    margin-bottom: 0px;
     width: 200px;
     padding-left: 20px;
     margin-left: 30px;
@@ -386,13 +384,13 @@ input{
     width: 300px;
 }
 
-table,th,td {
+th,td {
     border-style:solid;
     border-color: black;
     padding-bottom: 5px;
     padding-top: 5px;
-    padding-left: 50px;
-    padding-right: 50px;
+    padding-left: 10px;
+    padding-right: 10px;
     border-width: 1px;
 }
 .edit1{
@@ -406,7 +404,7 @@ background-color: white;
 .doctorlist {
     counter-reset: serial-number;
     margin-top: 80px;
-    margin-left: 157px;
+    margin-left: 155px;
     border-width: 1px;
 }
 .doctorlist td:first-child:before {
@@ -424,13 +422,11 @@ background-color: white;
     padding-right: 30px;
     border-top: 0px;
     margin-left: -144px;
-    margin-top: -60px;
-    margin-bottom: 200px;
+    margin-bottom: 100px;
+    margin-top:0px;
 }
 .addDoctor{
     margin-left: 300px;
-    margin-top: 60px;
-
 }
 .showadmin{
     margin-left: 300px;
@@ -449,7 +445,7 @@ label{
 .stafflist {
     counter-reset: serial-number;
     margin-top: 80px;
-    margin-left: 157px;
+    margin-left: 155px;
 }
 
 .stafflist td:first-child:before {
@@ -478,7 +474,7 @@ label{
 .patientlist {
     counter-reset: serial-number;
     margin-top: 40px;
-    margin-left: 157px;
+    margin-left: 155px;
 }
 
 .patientlist td:first-child:before {
@@ -488,7 +484,7 @@ label{
 .Admitlist {
     counter-reset: serial-number;
     margin-top: 80px;
-    margin-left: 157px;
+    margin-left: 155px;
 }
 
 .Admitlist td:first-child:before {
@@ -498,7 +494,7 @@ label{
 .Dischargelist {
     counter-reset: serial-number;
     margin-top: 80px;
-    margin-left: 157px;
+    margin-left: 155px;
 }
 
 .Dischargelist td:first-child:before {
@@ -508,7 +504,7 @@ label{
 .Appointmentlist {
     counter-reset: serial-number;
     margin-top: 80px;
-    margin-left: 157px;
+    margin-left: 155px;
 }
 
 .Appointmentlist td:first-child:before {
@@ -642,6 +638,7 @@ a{
     font-size: 30px;
 }
 .nextline{
+    position: absolute;
     margin-left: 500px;
-    margin-top: -160px;
+    margin-top: -200px;
 }
