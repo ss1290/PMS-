@@ -3,12 +3,19 @@ body {
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     margin: auto;
 }
+html,
+body {
+    min-width: 100%;
+}
 form input {
     margin-top: 10px;
 }
 
 form select {
     margin-top: 10px;
+}
+form {
+    width: 900px;
 }
 a {
     padding: 40 px;
