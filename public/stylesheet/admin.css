@@ -422,12 +422,12 @@ background-color: white;
     padding-left: 30px;
     padding-right: 30px;
     border-top: 0px;
-    margin-left: 17px;
+    margin-left: 47px;
     margin-bottom: 100px;
     margin-top:0px;
 }
 .addDoctor{
-    margin-left: 140px;
+    margin-left: 110px;
 }
 .showadmin{
     margin-left: 300px;
@@ -468,7 +468,7 @@ label{
     margin-top: -60px;
 }
 .addStaff {
-    margin-left: 140px;
+    margin-left: 110px;
 
 }
 .patientlist {
@@ -512,7 +512,7 @@ label{
     content: counter(serial-number);
 }
 .addPatient {
-    margin-left: 140px;
+    margin-left: 110px;
 
 }
 .profile{
