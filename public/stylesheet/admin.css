@@ -12,6 +12,7 @@ button {
 }
 form input{
     margin-top:10px;
+    width: 150px;
 }
 form select{
     margin-top: 10px;
@@ -640,5 +641,5 @@ a{
     position: absolute;
     margin-left: 400px;
     margin-top: -180px;
-    width: 325px;
+    width: 70%;
 }
