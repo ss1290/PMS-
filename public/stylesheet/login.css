@@ -1,0 +1,84 @@
+body {
+    display: table;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    margin: auto;
+}
+
+button {
+    cursor: pointer;
+}
+
+form input {
+    margin-top: 10px;
+}
+
+form select {
+    margin-top: 10px;
+}
+
+.login {
+    border-style: solid;
+    border-width: 1px;
+    font-size: 20px;
+    width: 600px;
+    padding-left:30px ;
+    padding-right: 30px;
+}
+
+.login-form {
+    padding: 20px;
+
+}
+
+.logintext {
+    display: table;
+    margin: auto;
+    border-style: solid;
+    background-color: rgb(153, 224, 139);
+    padding-left: 60px;
+    padding-right: 60px;
+    border-width: 1px;
+    margin-bottom: 30px;
+    font-size: 23px;
+}
+
+.submitButton {
+    margin-left: 200px;
+    background-color: rgb(153, 224, 139);
+    border-style: solid;
+    border-radius: 18px;
+    padding-right: 30px;
+    padding-left: 30px;
+    border-width: 1px;
+    margin-bottom: 40px;
+    margin-top: 60px;
+    font-size: 25px;
+}
+
+.forgotPassword {
+    border-style: solid;
+    border-radius: 18px;
+    margin-bottom: 10px;
+    border-width: 1px;
+    margin-left: 20px;
+    padding-right: 20px;
+    padding-left: 20px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    margin-bottom: 50px;
+    font-size: 20px;
+}
+
+.heading {
+    margin-left: 210px;
+    margin-top: 40px;
+    margin-bottom: 15px;
+}
+label {
+    display: inline-block;
+    width: 140px;
+    text-align: right;
+}
+input {
+    width: 300px;
+}
