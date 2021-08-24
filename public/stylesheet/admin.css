@@ -2,7 +2,7 @@ body {
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     margin: auto;
     display: inline-block;
-    width: 1920px;
+    width: 100%;
 }
 button {
     cursor: pointer;
