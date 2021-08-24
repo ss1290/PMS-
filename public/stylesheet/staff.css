@@ -1,13 +1,16 @@
 body {
-    display: table;
     margin: auto;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    display: inline-block;
+}
+html,
+body {
+    min-width: 100%;
 }
 .heading1 {
     border-style: solid;
     border-width: 1px;
     background-color: rgb(222, 222, 233);
-    width: 1920px;
 }
 a {
     padding: 40 px;
@@ -32,19 +35,18 @@ form select {
 }
 
 .heading {
-    margin-left: 185px;
-    margin-top: 40px;
-    margin-bottom: 15px;
+    margin-left: 40px;
+    padding-right: 20px;
 }
 
 .logoutButton {
     position: absolute;
-    font-size: 30px;
-    margin-left: 1680px;
-    margin-top: -60px;
+    right: 0;
+    font-size:30px;
     border-radius: 18px;
     background-color: white;
-    padding-right: 25px;
+    top: 0;
+    margin-top: 60px;
 }
 
 .navigationbar {
@@ -222,10 +224,6 @@ label {
 input::placeholder {
     padding-left: 40px;
 }
-
-input {
-    width: 300px;
-}
 .Dlist2{
     position: absolute;
     background-color: rgb(181, 188, 207);
@@ -291,14 +289,14 @@ input {
     content: counter(serial-number);
 }
 
-table,
 th,
 td {
     border: 1px solid black;
     padding-bottom: 5px;
     padding-top: 5px;
-    padding-left: 50px;
-    padding-right: 50px;
+    padding-left: 10px;
+    padding-right: 10px;
+    border-width: 1px;
 }
 .Plist1 {
     padding-top: 10px;
@@ -336,9 +334,7 @@ td {
     margin-top: 100px;
 }
 .addPatient {
-    margin-left: 300px;
-    margin-top: 60px;
-
+    margin-left: 140px;
 }
 .add1 {
     position: absolute;
@@ -351,7 +347,7 @@ td {
     padding-left: 30px;
     padding-right: 30px;
     border-top: 0px;
-    margin-left: -144px;
+    margin-left: 17px;
     margin-top: -80px;
 }
 .addpatientbutton {
@@ -492,7 +488,7 @@ td {
 .alreadyRegistered{
     border-width:0px;
     position: absolute;
-    margin-left: 970px;
+    margin-left: 780px;
     width: 200px;
     margin-top: -55px;
     padding-top: 15px;
@@ -520,4 +516,10 @@ td {
     padding-left: 30px;
     padding-right: 30px;
 
+}
+.nextline {
+    position: fixed;
+    margin-left: 500px;
+    margin-top: -180px;
+    width: 50%;
 }
