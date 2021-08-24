@@ -1,5 +1,4 @@
 body {
-    display: table;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     margin: auto;
     display: inline-block;
@@ -14,9 +13,6 @@ form input {
 
 form select {
     margin-top: 10px;
-}
-form {
-    width: 900px;
 }
 a {
     padding: 40 px;
@@ -235,8 +231,9 @@ td {
     border: 1px solid black;
     padding-bottom: 5px;
     padding-top: 5px;
-    padding-left: 50px;
-    padding-right: 50px;
+    padding-left: 10px;
+    padding-right: 10px;
+    border-width: 1px;
 }
 .Plist1 {
     padding-top: 10px;
@@ -313,8 +310,8 @@ td {
     content: counter(serial-number);
 }
 .nextline {
-    position: absolute;
-    margin-left: 340px;
+    position: fixed;
+    margin-left: 500px;
     margin-top: -180px;
-    width: 100%;
+    width: 50%;
 }
