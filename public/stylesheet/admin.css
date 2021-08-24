@@ -380,10 +380,6 @@ input::placeholder{
     margin-left: 200px;
     margin-top: 60px;
 }
-input{
-    width: 300px;
-}
-
 th,td {
     border-style:solid;
     border-color: black;
@@ -639,6 +635,6 @@ a{
 }
 .nextline{
     position: absolute;
-    margin-left: 500px;
-    margin-top: -200px;
+    margin-left: 350px;
+    margin-top: -180px;
 }
