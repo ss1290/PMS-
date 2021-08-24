@@ -16,9 +16,6 @@ form input{
 form select{
     margin-top: 10px;
 }
-form{
-    width: 900px;
-}
 .submitButton{
     margin-left: 200px;
     background-color: rgb(153, 224, 139);
@@ -643,5 +640,5 @@ a{
     position: absolute;
     margin-left: 340px;
     margin-top: -180px;
-    width: 100%;
+    width: 500px;
 }

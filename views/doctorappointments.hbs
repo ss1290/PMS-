@@ -54,20 +54,20 @@
     <script>
         function dboard1() {
             var { token } = Qs.parse(location.search, { ignoreQueryPrefix: true })
-            location.href = `/dashboard/admin?&token=${token}`
+            location.href = `/dashboard/doctor?&token=${token}`
         }
     </script>
 
     <script>
         function showPatient() {
             var { token } = Qs.parse(location.search, { ignoreQueryPrefix: true })
-            location.href = `/admin/patient?&token=${token}&page=${0}`
+            location.href = `/doctor/patient?&token=${token}&page=${0}`
         }
     </script>
     <script>
         function showProfile() {
             var { token } = Qs.parse(location.search, { ignoreQueryPrefix: true })
-            location.href = `/adminprofile?&token=${token}`
+            location.href = `/doctorprofile?&token=${token}`
         }
     </script>
     <script src="/js/logout.js"></script>

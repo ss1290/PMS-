@@ -2,6 +2,7 @@ body {
     display: table;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     margin: auto;
+    display: inline-block;
 }
 html,
 body {
@@ -35,21 +36,19 @@ button {
     border-style: solid;
     border-width: 1px;
     background-color: rgb(222, 222, 233);
-    width: 1920px;
 }
 .heading {
-    margin-left: 185px;
-    margin-top: 40px;
-    margin-bottom: 15px;
+    margin-left: 40px;
+    padding-right: 20px;
 }
 .logoutButton {
     position: absolute;
-    font-size: 30px;
-    margin-left: 1680px;
-    margin-top: -60px;
+    right: 0;
+    font-size:30px;
     border-radius: 18px;
     background-color: white;
-    padding-right: 25px;
+    top: 0;
+    margin-top: 60px;
 }
 .navigationbar {
     border-style: solid;
@@ -87,7 +86,7 @@ button {
     background-color: white;
     padding-right: 45px;
     border-right: 0px;
-    padding-right: 42px;
+    padding-right: 48px;
 }
 .dashboardimage {
     width: 40px;
@@ -194,9 +193,6 @@ label {
 input::placeholder {
     padding-left: 40px;
 }
-input{
-    width: 300px;
-}
 .patientlist {
     counter-reset: serial-number;
     margin-top: 40px;
@@ -277,35 +273,34 @@ td {
     margin-top: 100px;
 }
 .addPatient {
-    margin-left: 300px;
-    margin-top: 60px;
-
+    margin-left: 140px;
 }
 .add1 {
-    position: absolute;
-    background-color: rgb(235, 229, 146);
-    border: solid;
-    border-width: 1px;
-    width: 204px;
-    padding-bottom: 10px;
-    padding-top: 10px;
-    padding-left: 30px;
-    padding-right: 30px;
-    border-top: 0px;
-    margin-left: -144px;
-    margin-top: -80px;
+   background-color:rgb(235, 229, 146);
+   border: solid;
+   border-width: 1px;
+   width: 204px;
+   padding-bottom: 10px;
+   padding-top: 10px;
+   padding-left: 30px;
+   padding-right: 30px;
+   border-top: 0px;
+   margin-left: 17px;
+   margin-bottom: 100px;
+   margin-top:-80px;
 }
 .addpatientbutton {
-    margin-left: 200px;
-    background-color: rgb(153, 224, 139);
-    border-style: solid;
-    border-radius: 18px;
-    padding-right: 30px;
-    padding-left: 30px;
-    border-width: 1px;
-    margin-bottom: 40px;
-    margin-top: 100px;
-
+   margin-left: 400px;
+   background-color: rgb(153, 224, 139);
+   border-style:solid;
+   border-radius: 18px;
+   padding-right: 40px;
+   padding-left: 40px;
+   border-width: 1px;
+   margin-bottom: 40px;
+   margin-top: 100px;
+   padding-top: 10px;
+   padding-bottom: 10px;
 }
 .Appointmentlist {
     counter-reset: serial-number;
@@ -316,4 +311,10 @@ td {
 .Appointmentlist td:first-child:before {
     counter-increment: serial-number;
     content: counter(serial-number);
+}
+.nextline {
+    position: absolute;
+    margin-left: 340px;
+    margin-top: -180px;
+    width: 100%;
 }
