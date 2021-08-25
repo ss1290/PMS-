@@ -704,7 +704,7 @@ app.get('/staff/admit',Authorization,async(req,res)=>{
     app.get('/forgot',async(req,res)=>{
         try{
             const user=await User.findOne({email:req.query.email})
-            const link=`http://localhost:3000/resetform?email=${req.query.email}`
+            const link=`https://pms-web-application.herokuapp.com/resetform?email=${req.query.email}`
             if(!user){
                 throw new Error('Sorry user is not registered.Please try Again!')
             }
