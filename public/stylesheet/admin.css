@@ -385,14 +385,15 @@ input::placeholder{
     margin-left: 200px;
     margin-top: 60px;
 }
-th,td {
-    border-style:solid;
-    border-color: black;
-    padding-bottom: 5px;
-    padding-top: 5px;
-    padding-left: 10px;
-    padding-right: 10px;
+table,th,td{
+    border-style: solid;
     border-width: 1px;
+}
+table{
+    border-collapse: collapse;
+}
+th{
+    background-color:lightgoldenrodyellow;
 }
 .edit1{
 border-width: 0px;
@@ -405,7 +406,7 @@ background-color: white;
 .doctorlist {
     counter-reset: serial-number;
     margin-top: 80px;
-    margin-left: 155px;
+    margin-left: 157px;
     border-width: 1px;
 }
 .doctorlist td:first-child:before {
@@ -446,7 +447,7 @@ label{
 .stafflist {
     counter-reset: serial-number;
     margin-top: 80px;
-    margin-left: 155px;
+    margin-left: 157px;
 }
 
 .stafflist td:first-child:before {
@@ -473,8 +474,8 @@ label{
 }
 .patientlist {
     counter-reset: serial-number;
-    margin-top: 40px;
-    margin-left: 155px;
+    margin-top: 80px;
+    margin-left: 157px;
 }
 
 .patientlist td:first-child:before {
@@ -637,8 +638,7 @@ a{
     font-size: 30px;
 }
 .nextline{
-    position:fixed;
+    position: absolute;
     margin-left: 500px;
-    margin-top: -180px;
-    width: 50%;
+    margin-top: -150px;
 }

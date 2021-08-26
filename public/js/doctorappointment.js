@@ -9,7 +9,6 @@ fetch(`/patient/appointment?token=${token}&page=${page}`).then((response)=>{
            list6.insertAdjacentHTML("beforeend",`<tr><td></td>
                         <td>${data.Appointments[i].date}</td>
                         <td>${data.Appointments[i].time}</td>
-                        <td>${data.Appointments[i].doctor}</td>
                          <td>${data.Appointments[i].name}</td>
                         </tr>`) 
                     }
@@ -25,7 +24,7 @@ fetch(`/patient/appointment?token=${token}&page=${page}`).then((response)=>{
                         table = document.getElementById("Appointmentlist");
                         tr = table.getElementsByTagName("tr");
                         for (i = 0; i < tr.length; i++) {
-                            td = tr[i].getElementsByTagName("td")[4];
+                            td = tr[i].getElementsByTagName("td")[3];
                             if (td) {
                                 txtValue = td.textContent || td.innerText;
                                 if (txtValue.toUpperCase().indexOf(filter) > -1) {

@@ -670,7 +670,7 @@ app.get('/staff/admit',Authorization,async(req,res)=>{
         var minDate = year + '-' + month + '-' + day; 
         res.render('patientappointment',{doctor,patient,minDate})
     })
-    app.get('/patient/appointment',Authorization,async(req,res)=>{
+    app.get('/patient/appointments',Authorization,async(req,res)=>{
         try{
             appointmentValidate(req.query)
             const doctor=await User.findOne({name:req.query.doctor,department:req.query.department})
