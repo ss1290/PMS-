@@ -505,7 +505,7 @@ label{
 .Appointmentlist {
     counter-reset: serial-number;
     margin-top: 80px;
-    margin-left: 155px;
+    margin-left: 157px;
 }
 
 .Appointmentlist td:first-child:before {
