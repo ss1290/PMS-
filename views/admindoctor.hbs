@@ -39,7 +39,24 @@
                 <span class="fas fa-search" style="position:absolute;margin-top:5px;margin-left:5px;"></span>
                 <input type="text" placeholder="search" id="doctorsearch" style="padding-left:50px;">
             </div>
-            <table class="doctorlist" id="doctorlist">
+            <div id="doctorview">
+                <table class="doctorlist" id="doctorlist">
+                    <thead>
+                        <tr>
+                            <th>S.No.</th>
+                            <th>Doctor Name</th>
+                            <th>Department</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="list1">
+                    </tbody>
+                </table>
+                <button class="next" id="edit2" onclick="next()" style="display:none">next</button>
+                <br>
+                <button class="back" id="edit3" onclick="back()">back</button>
+            </div>
+            <table class="doctorfilterlist" id="doctorfilterlist" style="display:none">
                 <thead>
                     <tr>
                         <th>S.No.</th>
@@ -48,12 +65,12 @@
                         <th>Actions</th>
                     </tr>
                 </thead>
-                <tbody id="list1">
+                <tbody id="list2">
                 </tbody>
             </table>
-            <button class="next" id="edit2" onclick="next()">next</button>
             <div class="addDoctor" id="addDoctor" style="display:none">
                 <p class="add1">Add Doctor</p>
+                <p id="message" class="message"></p>
                 <form id="DoctorForm" class="DoctorForm">
                     <label>Name</label>
                     <input type="text" id="Name" required>
@@ -89,7 +106,6 @@
                     </div>
                     <button class="adddoctorbutton">Submit</button>
                 </form>
-                <p id="message" class="message"></p>
             </div>
         </div>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/qs/6.6.0/qs.min.js"></script>
@@ -97,19 +113,17 @@
         <script src="/js/doctorsignup.js"></script>
         <script>
             function addDoctor() {
-                document.getElementById('doctorlist').style.display = "none"
+                document.getElementById('doctorview').style.display = "none"
                 document.getElementById('searchbox1').style.display = "none"
                 document.getElementById('addDoctor').style.display = "block"
-                document.getElementById('edit2').style.display = "none"
 
             }
         </script>
         <script>
             function viewDoctor() {
-                document.getElementById('doctorlist').style.display = ""
+                document.getElementById('doctorview').style.display = ""
                 document.getElementById('searchbox1').style.display = ""
                 document.getElementById('addDoctor').style.display = "none"
-                document.getElementById('edit2').style.display = "none"
             }
         </script>
         <script>

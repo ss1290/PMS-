@@ -33,7 +33,27 @@
                 <span class="fas fa-search" style="position:absolute;margin-top:5px;margin-left:5px;"></span>
                 <input type="text" placeholder="search" id="patientsearch" style="padding-left:50px;">
             </div>
-            <table class="patientlist" id="patientlist">
+            <div id="patientview">
+                <table class="patientlist" id="patientlist">
+                    <thead>
+                        <tr>
+                            <th>S.No.</th>
+                            <th>Patient Id</th>
+                            <th>Patient name</th>
+                            <th>Age</th>
+                            <th>Gender</th>
+                            <th>Blood Group</th>
+                            <th>Birth Date</th>
+                        </tr>
+                    </thead>
+                    <tbody id="list3">
+                    </tbody>
+                </table>
+                <button class="next" id="edit2" onclick="next()" style="display:none">next</button>
+                <br>
+                <button class="back" id="edit3" onclick="back()">back</button>
+            </div>
+            <table class="patientfilterlist" id="patientfilterlist" style="display:none">
                 <thead>
                     <tr>
                         <th>S.No.</th>
@@ -45,12 +65,12 @@
                         <th>Birth Date</th>
                     </tr>
                 </thead>
-                <tbody id="list3">
+                <tbody id="list4">
                 </tbody>
             </table>
-            <button class="next" id="edit2" onclick="next()">next</button>
             <div class="addPatient" id="addPatient" style="display:none">
                 <p class="add1">Add Patient</p>
+                <p id="message" class="message"></p>
                 <form id="PatientForm">
                     <label>Patient Name</label>
                     <input type="text" id="patientName" required>
@@ -97,8 +117,6 @@
                 </form>
             </div>
         </div>
-       
-        <p id="message" class="message"></p>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/qs/6.6.0/qs.min.js"></script>
         <script>
             function showProfile() {
@@ -120,23 +138,20 @@
         </script>
         <script>
             function addPatient() {
-                document.getElementById('patientlist').style.display = "none"
+                document.getElementById('patientview').style.display = "none"
                 document.getElementById('searchbox3').style.display = "none"
                 document.getElementById('addPatient').style.display = "block"
-                document.getElementById('edit2').style.display = "none"
-
             }
         </script>
         <script>
             function viewPatient() {
-                document.getElementById('patientlist').style.display = ""
+                document.getElementById('patientview').style.display = ""
                 document.getElementById('searchbox3').style.display = ""
                 document.getElementById('addPatient').style.display = "none"
-                document.getElementById('edit2').style.display = "none"
             }
         </script>
         <script src="/js/logout.js"></script>
-        <script src="/js/doctorpatientshow.js"></script>
+        <script src="/js/staffpatientshow.js"></script>
         <script src="/js/staffpatientadd.js"></script>
     </body>
 </html>

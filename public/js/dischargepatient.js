@@ -24,7 +24,7 @@ form.addEventListener('submit',(e)=>{
         })
     })
 })
-function resetForm(){
+function resetform(){
     form.reset()
 }
 var optionValues1 =[];

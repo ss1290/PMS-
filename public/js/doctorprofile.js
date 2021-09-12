@@ -10,11 +10,11 @@ var {token}=Qs.parse(location.search,{ignoreQueryPrefix:true})
 var message=document.querySelector('#message')
 profile.addEventListener('submit',(e)=>{
     e.preventDefault()
-    fetch(`/doctor/profile?token=${token}&name=${editName.value}&email=${editEmail.value}&oldpassword=${editPassword.value}&address=${editAddress.value}&phoneNumber=${editPhoneNo.value}&newpassword=${editNewPassword.value}&confirmpassword=${editConfirmPassword.value}`).then((response)=>{
+    fetch(`/profile?token=${token}&name=${editName.value}&email=${editEmail.value}&oldpassword=${editPassword.value}&address=${editAddress.value}&phoneNumber=${editPhoneNo.value}&newpassword=${editNewPassword.value}&confirmpassword=${editConfirmPassword.value}`).then((response)=>{
         response.json().then((data)=>{
             if(data.Error){
                 message.textContent=data.Error
-            }else if(data.doctor){
+            }else if(data.user){
                 message.textContent=''
                 alert('Profile Updated')
                 location.href=`/doctorprofile?&token=${token}`

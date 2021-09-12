@@ -13,7 +13,7 @@ staffprofile.addEventListener('submit',(e)=>{
         response.json().then((data)=>{
             if(data.Error){
                 alert(data.Error)
-            }else if(data.staff){
+            }else if(data.user){
                 message.textContent=''
                 alert('Profile Updated')
                 location.href=`/staffprofile?&token=${token}`

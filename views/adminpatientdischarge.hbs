@@ -41,7 +41,8 @@
                 <span class="fas fa-search" style="position:absolute;margin-top:5px;margin-left:5px;"></span>
                 <input type="text" placeholder="search" id="dischargesearch" style="padding-left:50px;">
             </div>
-            <table class="Dischargelist" id="Dischargelist">
+            <div id="dischargeview">
+                <table class="Dischargelist" id="Dischargelist">
                 <thead>
                     <tr>
                         <th>S.No.</th>
@@ -54,8 +55,25 @@
                 <tbody id="list5">
                 </tbody>
             </table>
-            <button class="next" id="edit2" onclick="next()">next</button>
+            <button class="next" id="edit2" onclick="next()" style="display:none">next</button>
+            <br>
+            <button class="back" id="edit3" onclick="back()">back</button>
+            </div>
+            <table class="Dischargefilterlist" id="Dischargefilterlist" style="display:none">
+                <thead>
+                    <tr>
+                        <th>S.No.</th>
+                        <th>Patient Name</th>
+                        <th>Select Ward</th>
+                        <th>Doctor Name</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody id="list6">
+                </tbody>
+            </table>
         <div class="dischargeform" id="dischargeform" style="display:none;">
+            <p id="message" class="message"></p>
             <form id="dischargeForm">
                 <label>Patient Name</label>
                 <select id="PatientName">
@@ -112,27 +130,24 @@
                 <br>
                 <button class="AdmitButton"> submit</button>
             </form>
-            <button class="cancelbutton" onclick="resetForm()">Cancel</button>
+            <button class="cancelbutton" onclick="resetform()">Cancel</button>
         </div>
         </div>
-        <p id="message" class="message"></p>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/qs/6.6.0/qs.min.js"></script>
         <script src="/js/dischargeshow.js"></script>
         <script src="/js/dischargepatient.js"></script>
         <script>
             function dischargepatient() {
                 document.getElementById('dischargeform').style.display = ''
-                document.getElementById('Dischargelist').style.display = 'none'
+                document.getElementById('dischargeview').style.display = 'none'
                 document.getElementById('searchbox1').style.display = 'none'
-                 document.getElementById('edit2').style.display = "none"
             }
         </script>
         <script>
             function dischargelist() {
                 document.getElementById('dischargeform').style.display = 'none'
-                document.getElementById('Dischargelist').style.display = ''
+                document.getElementById('dischargeview').style.display = ''
                 document.getElementById('searchbox1').style.display = ''
-                document.getElementById('edit2').style.display = "none"
             }
         </script>
         <script>

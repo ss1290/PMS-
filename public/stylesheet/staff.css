@@ -253,7 +253,7 @@ input::placeholder {
     border-right: 0px;
 }
 .message {
-    margin-left: 200px;
+    margin-left: 300px;
     font-size: 30px;
     color: red;
     margin-top: 30px;
@@ -279,16 +279,13 @@ input::placeholder {
 }
 
 .patientlist {
-    counter-reset: serial-number;
     margin-top: 80px;
     margin-left: 157px;
 }
-
-.patientlist td:first-child:before {
-    counter-increment: serial-number;
-    content: counter(serial-number);
+.patientfilterlist{
+    margin-top: 80px;
+    margin-left: 157px;
 }
-
 table,
 th,
 td {
@@ -328,15 +325,24 @@ th {
 
 }
 .next {
-    margin-left: 400px;
+    margin-left: 250px;
     background-color: rgb(153, 224, 139);
     border-style: solid;
     border-radius: 18px;
     padding-right: 30px;
     padding-left: 30px;
     border-width: 1px;
-    margin-bottom: 40px;
-    margin-top: 100px;
+    margin-top: 40px;
+}
+.back {
+    margin-left: 250px;
+    background-color: rgb(153, 224, 139);
+    border-style: solid;
+    border-radius: 18px;
+    padding-right: 30px;
+    padding-left: 30px;
+    border-width: 1px;
+    margin-top: 40px;
 }
 .addPatient {
     margin-left: 140px;
@@ -415,17 +421,15 @@ th {
     border-bottom: 0px;
 }
 .Admitlist {
-    counter-reset: serial-number;
     margin-top: 80px;
     margin-left: 157px;
 }
-
-.Admitlist td:first-child:before {
-    counter-increment: serial-number;
-    content: counter(serial-number);
+.Admitfilterlist{
+    margin-top: 80px;
+    margin-left: 157px;
 }
 .admitform {
-    margin-left: 300px;
+    margin-left: 140px;
     margin-top: 100px;
 }
 .AdmitButton {
@@ -437,34 +441,28 @@ th {
     padding-left: 30px;
     border-width: 1px;
     margin-bottom: 40px;
-    margin-top: 100px;
+    margin-top: 40px;
 }
 
 .cancelbutton {
-    position: absolute;
-    margin-left: 210px;
+    margin-left: 100px;
     background-color: rgb(153, 224, 139);
     border-style: solid;
     border-radius: 18px;
     padding-right: 30px;
     padding-left: 30px;
     border-width: 1px;
-    margin-bottom: 40px;
-    margin-top: -65px;
 }
 .Dischargelist {
-    counter-reset: serial-number;
     margin-top: 80px;
     margin-left: 157px;
 }
-
-.Dischargelist td:first-child:before {
-    counter-increment: serial-number;
-    content: counter(serial-number);
+.Dischargefilterlist {
+    margin-top: 80px;
+    margin-left: 157px;
 }
-
 .dischargeform {
-    margin-left: 300px;
+    margin-left: 140px;
     margin-top: 100px;
 }
 

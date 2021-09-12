@@ -25,7 +25,6 @@
         <button class="profile1" onclick="showProfile()"><span><input type=image class="profileimage"
                     src="/img/profile.png"></span>&emsp;Profile</button>
     </div>
-    <div id="viewAppointments" class="viewAppointments">
         <div class="appointmentBar">
             <input type=image class="feed1" src="/img/feed.png">
             <p class="Dlist2">View Appointments</p>
@@ -34,21 +33,37 @@
             <span class="fas fa-search" style="position:absolute;margin-top:5px;margin-left:5px;"></span>
             <input type="text" placeholder="search" id="appointmentsearch" style="padding-left:50px;">
         </div>
-        <table class="Appointmentlist" id="Appointmentlist">
+        <div id="appointmentview">
+            <table class="Appointmentlist" id="Appointmentlist">
+                <thead>
+                    <tr>
+                        <th>S.No.</th>
+                        <th>Date</th>
+                        <th>Time</th>
+                        <th>Doctor Name</th>
+                        <th>Patient Name</th>
+                    </tr>
+                </thead>
+                <tbody id="list6">
+                </tbody>
+            </table>
+            <button class="next" id="edit2" onclick="next()" style="display:none">next</button>
+            <br>
+            <button class="back" id="edit3" onclick="back()">back</button>
+        </div>
+        <table class="Appointmentfilterlist" id="Appointmentfilterlist" style="display:none">
             <thead>
                 <tr>
                     <th>S.No.</th>
                     <th>Date</th>
                     <th>Time</th>
+                    <th>Doctor Name</th>
                     <th>Patient Name</th>
                 </tr>
             </thead>
-            <tbody id="list6">
+            <tbody id="list7">
             </tbody>
         </table>
-    </div>
-    </div>
-    <button class="next" id="edit2" onclick="next()">next</button>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/qs/6.6.0/qs.min.js"></script>
     <script>
         function dboard1() {

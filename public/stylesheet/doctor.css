@@ -25,7 +25,7 @@ a {
     border-radius: 18px;
     font-size: 30px;
 }
-button {
+button{
     cursor: pointer;
 }
 .heading1 {
@@ -141,7 +141,6 @@ button {
 .showadmin {
     margin-left: 300px;
     margin-top: -400px;
-
 }
 .profilebar {
     border-style: solid;
@@ -167,7 +166,6 @@ button {
     margin-top: -31px;
 }
 .profile {
-    margin-top: 100px;
     margin-left: 300px;
 }
 label {
@@ -189,17 +187,8 @@ label {
 input::placeholder {
     padding-left: 40px;
 }
-.patientlist {
-    counter-reset: serial-number;
-    margin-top: 80px;
-    margin-left: 156px;
-}
-.patientlist td:first-child:before {
-    counter-increment: serial-number;
-    content: counter(serial-number);
-}
 .message {
-    margin-left: 200px;
+    margin-left: 300px;
     font-size: 30px;
     color: red;
     margin-top: 30px;
@@ -217,14 +206,12 @@ input::placeholder {
     margin-bottom: 80px;
 }
 .patientlist {
-    counter-reset: serial-number;
     margin-top: 40px;
     margin-left: 157px;
 }
-
-.patientlist td:first-child:before {
-    counter-increment: serial-number;
-    content: counter(serial-number);
+.patientfilterlist {
+    margin-top: 40px;
+    margin-left: 157px;
 }
 table,
 th,
@@ -264,15 +251,24 @@ th {
 
 }
 .next {
-    margin-left: 400px;
+    margin-left: 250px;
     background-color: rgb(153, 224, 139);
     border-style: solid;
     border-radius: 18px;
     padding-right: 30px;
     padding-left: 30px;
     border-width: 1px;
-    margin-bottom: 40px;
-    margin-top: 100px;
+    margin-top: 40px;
+}
+.back {
+    margin-left: 250px;
+    background-color: rgb(153, 224, 139);
+    border-style: solid;
+    border-radius: 18px;
+    padding-right: 30px;
+    padding-left: 30px;
+    border-width: 1px;
+    margin-top: 40px;
 }
 .addPatient {
     margin-left: 140px;
@@ -305,12 +301,10 @@ th {
    padding-bottom: 10px;
 }
 .Appointmentlist {
-    counter-reset: serial-number;
     margin-top: 80px;
     margin-left: 157px;
 }
-
-.Appointmentlist td:first-child:before {
-    counter-increment: serial-number;
-    content: counter(serial-number);
+.Appointmentfilterlist {
+    margin-top: 80px;
+    margin-left: 157px;
 }

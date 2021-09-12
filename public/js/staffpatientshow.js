@@ -14,7 +14,6 @@ fetch(`/patient/show?token=${token}&page=${page}`).then((response)=>{
             <td>${data.patients[i].gender}</td>
             <td>${data.patients[i].bloodGroup}</td>
             <td>${data.patients[i].birthDate}</td>
-            <td><a href="/patient/delete?token=${token}&id=${data.patients[i]._id}"<span class="material-icons">remove_circle_outline</span></a><a href="/patient/edit?token=${token}&id=${data.patients[i]._id}"><span class="material-icons">edit</span></a></td>
             </tr>`)
         }
         tr = list3.getElementsByTagName("tr");
@@ -35,7 +34,6 @@ fetch(`/patient/filter?token=${token}`).then((response)=>{
             <td>${data.patients[i].gender}</td>
             <td>${data.patients[i].bloodGroup}</td>
             <td>${data.patients[i].birthDate}</td>
-            <td><a href="/patient/delete?token=${token}&id=${data.patients[i]._id}"<span class="material-icons">remove_circle_outline</span></a><a href="/patient/edit?token=${token}&id=${data.patients[i]._id}"><span class="material-icons">edit</span></a></td>
             </tr>`)
         }
     })
@@ -63,17 +61,17 @@ search.onkeyup=function(){
             }
         }
     }
-} 
-function next(){
-    var page1=parseInt(pageNumber,10)+1
-    location.href=`/admin/patient?&token=${token}&page=${page1}`
 }
 if(pageNumber>0){
     document.getElementById('edit3').style.display=""
 }else{
     document.getElementById('edit3').style.display="none"
 }
+function next(){
+    var page1=parseInt(pageNumber,10)+1
+    location.href=`/staff/patient?&token=${token}&page=${page1}`
+}
 function back(){
     var previouspage=parseInt(pageNumber,10)-1
-    location.href=`/admin/patient?&token=${token}&page=${previouspage}`
+    location.href=`/staff/patient?&token=${token}&page=${previouspage}`
 }

@@ -14,7 +14,7 @@ adminprofile.addEventListener('submit',(e)=>{
         response.json().then((data)=>{
             if(data.Error){
                 message.textContent=data.Error
-            }else if(data.admin){
+            }else if(data.user){
                 message.textContent=''
                 alert('Profile Updated')
                 location.href=`/adminprofile?&token=${token}`

@@ -39,6 +39,23 @@ const patienteditValidate=(validate)=>{
         throw new Error('Please enter a valid age')
     }
 }
+const profileValidate=(validate)=>{
+    if(!validator.isAlpha(validate.name,'en-US',{ignore:'\s'})){
+        throw new Error('Please enter a valid name')
+    }
+    if(!validator.isAlphanumeric(validate.address,'en-US',{ignore:'\s'})){
+        throw new Error('Please enter a valid address')
+    }
+    if(!validator.isEmail(validate.email)){
+        throw new Error('Please enter a valid email')
+    }
+    if(!validator.isNumeric(validate.phoneNumber)){
+        throw new Error('Please enter a valid phone number')
+    }
+    if(validate.phoneNumber.length<10){
+        throw new Error('Please enter a phone number of atleast 10 digit')
+    }
+}
 const doctorValidate=(validate)=>{
     if(!validator.isAlpha(validate.name,'en-US',{ignore:'\s'})){
         throw new Error('Please enter a valid name')
@@ -65,7 +82,13 @@ const doctorValidate=(validate)=>{
     if(!validator.isNumeric(validate.timeFrom)){
         throw new Error('Please enter a valid time from')
     }
+    if(validate.timeFrom.length>2){
+        throw new Error('Please enter a valid time from')
+    }
     if(!validator.isNumeric(validate.timeTo)){
+        throw new Error('Please enter a valid time to')
+    }
+    if(validate.timeTo.length>2){
         throw new Error('Please enter a valid time to')
     }
     if(!validator.isNumeric(validate.consultancyFee)){
@@ -95,7 +118,13 @@ const doctoreditValidate=(validate)=>{
     if(!validator.isNumeric(validate.timeFrom)){
         throw new Error('Please enter a valid time from')
     }
+     if(validate.timeFrom.length>2){
+        throw new Error('Please enter a valid time from')
+    }
     if(!validator.isNumeric(validate.timeTo)){
+        throw new Error('Please enter a valid time to')
+    }
+     if(validate.timeTo.length>2){
         throw new Error('Please enter a valid time to')
     }
     if(!validator.isNumeric(validate.consultancyFee)){
@@ -198,5 +227,6 @@ module.exports={
     doctoreditValidate,
     patienteditValidate,
     staffeditValidate,
-    dischargeValidate
+    dischargeValidate,
+    profileValidate
 }

@@ -10,7 +10,7 @@ const Appointment=require('../models/appointment')
 const Authorization=require('../middleware/auth')
 const {sendForgotEmail}=require('../email/forgotPassword')
 const validator =require('validator')
-const {patientValidate,doctorValidate, staffValidate,registrationValidate,appointmentValidate,doctoreditValidate,patienteditValidate,staffeditValidate,dischargeValidate}=require('../validator/validate')
+const {profileValidate,patientValidate,doctorValidate, staffValidate,registrationValidate,appointmentValidate,doctoreditValidate,patienteditValidate,staffeditValidate,dischargeValidate}=require('../validator/validate')
 mongoose.connect('mongodb+srv://Shashank:Sonu123@cluster0.orib0.mongodb.net/PMS?retryWrites=true&w=majority',{
     useNewUrlParser:true,
     useCreateIndex:true,
@@ -155,6 +155,10 @@ app.get('/dashboard/admin',Authorization,async(req,res)=>{
         const Appointments=await Appointment.find({}).skip(page*20).limit(20)
         res.send({Appointments})
     })
+app.get('/appointment/filter',Authorization,async(req,res)=>{
+        const Appointments=await Appointment.find({})
+        res.send({Appointments})
+    })
 app.get('/signup/doctor',Authorization,async(req,res)=>{
     try{
         doctorValidate(req.query) 
@@ -240,6 +244,7 @@ app.get('/signup/staff',Authorization,async(req,res)=>{
     })
     app.get('/profile',Authorization,async(req,res)=>{
         try{
+            profileValidate(req.query)
             if(req.query.oldpassword){
                 if(req.query.oldpassword!=req.user.password){
                     throw new Error('Please enter right password')
@@ -248,13 +253,14 @@ app.get('/signup/staff',Authorization,async(req,res)=>{
             if(req.query.newpassword!==req.query.confirmpassword){
                 throw new Error('Confirm password and New password should be same')
             }
+            if(req.query.oldpassword===req.query.newpassword){
+                throw new Error('Old password and new password should not be same')
+            }
             if(req.query.newpassword){{
-                if(!validator.isStrongPassword(req.query.newpassword,{
-                    minLength: 8, minLowercase: 1,
-                    minUppercase: 1, minNumbers: 1, minSymbols: 1})) 
-                    {
-                        throw new Error('Please choose a password of 8 characters with atleast one lowercase letter and one uppercase letter and one symbol')
-                    }
+                if(!validator.isStrongPassword(req.query.newpassword,{minLength: 8, minLowercase: 1,minUppercase: 1, minNumbers: 1, minSymbols: 1}))
+                {
+                    throw new Error('Please enter a valid password')
+                }
                     await User.findByIdAndUpdate(req.user._id,{
                         name:req.query.name,
                         email:req.query.email,
@@ -270,7 +276,7 @@ app.get('/signup/staff',Authorization,async(req,res)=>{
                     phoneNumber:req.query.phoneNumber
                 })
             }
-            res.send({admin:req.user})
+            res.send({user:req.user})
         }catch(error){
             res.send({Error:error.message})
         }
@@ -499,7 +505,6 @@ app.get('/signup/staff',Authorization,async(req,res)=>{
         await Appointment.findByIdAndDelete(id)
         res.redirect('back')
     })
-
      app.get('/patient/delete',Authorization,async(req,res)=>{
         var id=req.query.id
         await Patient.findByIdAndDelete(id)
@@ -510,14 +515,26 @@ app.get('/signup/staff',Authorization,async(req,res)=>{
         const doctors=await User.find({role:'doctor'}).skip(page*20).limit(20)
         res.send({doctors})
     })
+    app.get('/doctor/filter',Authorization,async(req,res)=>{
+        const doctors=await User.find({role:'doctor'})
+        res.send({doctors})
+    })
     app.get('/staff/show',Authorization,async(req,res)=>{
         const page=parseInt(req.query.page, 20) || 0
         const staffs=await User.find({role:'staff'}).skip(page*20).limit(20)
         res.send({staffs})
     })
+     app.get('/staff/filter',Authorization,async(req,res)=>{
+        const staffs=await User.find({role:'staff'})
+        res.send({staffs})
+    })
     app.get('/patient/show',Authorization,async(req,res)=>{
         const page=parseInt(req.query.page, 20) || 0
         const patients=await Patient.find({}).skip(page*20).limit(20)
+        res.send({patients})
+    })
+    app.get('/patient/filter',Authorization,async(req,res)=>{
+        const patients=await Patient.find({})
         res.send({patients})
     })
     app.get('/patientshow',Authorization,async(req,res)=>{
@@ -528,9 +545,17 @@ app.get('/signup/staff',Authorization,async(req,res)=>{
         const Admits=await Admit.find({}).skip(page*20).limit(20)
         res.send({Admits})
     })
+    app.get('/admit/filter',Authorization,async(req,res)=>{
+        const Admits=await Admit.find({})
+        res.send({Admits})
+    })
       app.get('/discharge/show',Authorization,async(req,res)=>{
         const page=parseInt(req.query.page, 20) || 0
         const Discharges=await Discharge.find({}).skip(page*20).limit(20)
+        res.send({Discharges})
+    })
+     app.get('/discharge/filter',Authorization,async(req,res)=>{
+        const Discharges=await Discharge.find({})
         res.send({Discharges})
     })
     

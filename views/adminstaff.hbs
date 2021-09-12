@@ -39,7 +39,25 @@
             <span class="fas fa-search" style="position:absolute;margin-top:5px;margin-left:5px;"></span>
             <input type="text" placeholder="search" id="staffsearch" style="padding-left:50px;">
         </div>
-        <table class="stafflist" id="stafflist">
+        <div id="staffview">
+            <table class="stafflist" id="stafflist">
+                <thead>
+                    <tr>
+                        <th>S.No.</th>
+                        <th>Staff Name</th>
+                        <th>Email</th>
+                        <th>Address</th>
+                        <th>Phone No.</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody id="list2"></tbody>
+            </table>
+            <button class="next" id="edit2" onclick="next()" style="display:none">next</button>
+            <br>
+            <button class="back" id="edit3" onclick="back()">back</button>
+        </div>
+        <table class="stafffilterlist" id="stafffilterlist" style="display:none">
             <thead>
                 <tr>
                     <th>S.No.</th>
@@ -50,11 +68,11 @@
                     <th>Actions</th>
                 </tr>
             </thead>
-            <tbody id="list2"></tbody>
+            <tbody id="list3"></tbody>
         </table>
-        <button class="next" id="edit2" onclick="next()">next</button>
         <div class="addStaff" id="addStaff" style="display:none">
             <p class="add1">Add Staff</p>
+            <p id="message" class="message"></p>
             <form id="StaffForm">
                 <label>Name</label>
                 <input type="text" id="staffName" required>
@@ -75,22 +93,19 @@
             </form>
         </div>
     </div>
-    <p id="message" class="message"></p>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/qs/6.6.0/qs.min.js"></script>
     <script>
         function addStaff() {
-            document.getElementById('stafflist').style.display = "none"
+            document.getElementById('staffview').style.display = "none"
             document.getElementById('searchbox2').style.display = "none"
             document.getElementById('addStaff').style.display = "block"
-            document.getElementById('edit2').style.display='none'
         }
     </script>
     <script>
         function viewStaff() {
-            document.getElementById('stafflist').style.display = ""
+            document.getElementById('staffview').style.display = ""
             document.getElementById('searchbox2').style.display = ""
             document.getElementById('addStaff').style.display = "none"
-            document.getElementById('edit2').style.display='none'
         }
     </script>
     <script src="/js/staffsignup.js"></script>

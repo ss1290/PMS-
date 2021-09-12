@@ -40,7 +40,8 @@
                     <span class="fas fa-search" style="position:absolute;margin-top:5px;margin-left:5px;"></span>
                     <input type="text" placeholder="search" id="admitsearch" style="padding-left:50px;">
                 </div>
-                <table class="Admitlist" id="Admitlist">
+                <div id="admitview">
+                    <table class="Admitlist" id="Admitlist">
                         <tr>
                             <th>S.No.</th>
                             <th>Patient Name</th>
@@ -48,11 +49,26 @@
                             <th>Doctor Name</th>
                             <th>Actions</th>
                         </tr>
-                    <tbody id="list4">
+                        <tbody id="list4">
+                        </tbody>
+                    </table>
+                    <button class="next" id="edit2" onclick="next()" style="display:none">next</button>
+                    <br>
+                    <button class="back" id="edit3" onclick="back()">back</button>
+                </div>
+                <table class="Admitfilterlist" id="Admitfilterlist" style="display:none">
+                    <tr>
+                        <th>S.No.</th>
+                        <th>Patient Name</th>
+                        <th>Select Ward</th>
+                        <th>Doctor Name</th>
+                        <th>Actions</th>
+                    </tr>
+                    <tbody id="list5">
                     </tbody>
                 </table>
-                <button class="next" id="edit2" onclick="next()">next</button>
                 <div class="admitform" id="admitform" style="display:none">
+                    <p id="message" class="message"></p>
                     <form id="admitForm">
                         <label>Patient Name</label>
                         <select id="patientname">
@@ -105,7 +121,7 @@
                     </form>
                     <button class="cancelbutton" onclick="resetform()">Cancel</button>
                 </div>
-              <p id="message" class="message"></p>
+                </div>
               </div>
             <script src="https://cdnjs.cloudflare.com/ajax/libs/qs/6.6.0/qs.min.js"></script>
             <script src="/js/admitpatient.js"></script>
@@ -113,17 +129,15 @@
             <script>
                 function admitpatient(){
                     document.getElementById('admitform').style.display=''
-                    document.getElementById('Admitlist').style.display='none'
+                    document.getElementById('admitview').style.display='none'
                     document.getElementById('searchbox1').style.display = 'none'
-                    document.getElementById('edit2').style.display = "none"
                 }
             </script>
             <script>
                 function admitlist() {
                     document.getElementById('admitform').style.display = 'none'
-                    document.getElementById('Admitlist').style.display = ''
+                    document.getElementById('admitview').style.display = ''
                     document.getElementById('searchbox1').style.display = ''
-                    document.getElementById('edit2').style.display = "none"
                 }
             </script>
             <script>
