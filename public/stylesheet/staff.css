@@ -12,6 +12,16 @@ body {
     border-width: 1px;
     background-color: rgb(222, 222, 233);
 }
+.edit {
+    margin-left: 200px;
+    margin-top: 0px;
+}
+.message1 {
+    margin-left: 200px;
+    font-size: 30px;
+    color: red;
+    margin-top: -600px;
+}
 a {
     padding: 40 px;
     cursor: pointer;

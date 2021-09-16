@@ -609,9 +609,15 @@ label{
     color: red;
     margin-top: 30px;
 }
-.edit{
-    margin-left: 300px;
+.message1{
+    margin-left: 200px;
+    font-size: 30px;
+    color: red;
     margin-top: -600px;
+}
+.edit{
+    margin-left: 200px;
+    margin-top: 0px;
 }
 a{
     padding: 40 px;

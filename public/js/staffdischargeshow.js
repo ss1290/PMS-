@@ -11,6 +11,7 @@ fetch(`/discharge/show?token=${token}&page=${page}`).then((response)=>{
            <td>${data.Discharges[i].name}</td>
             <td>${data.Discharges[i].patientWard}</td>
             <td>${data.Discharges[i].doctor}</td>
+            <td><a href="/discharge1/edit?token=${token}&id=${data.Discharges[i]._id}"><span class="material-icons">edit</span></a></td>
             </tr>`)
         }
         tr = list5.getElementsByTagName("tr");

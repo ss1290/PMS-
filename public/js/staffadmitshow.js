@@ -11,6 +11,7 @@ fetch(`/admit/show?token=${token}&page=${page}`).then((response)=>{
            <td>${data.Admits[i].name}</td>
            <td>${data.Admits[i].patientWard}</td>
            <td>${data.Admits[i].doctor}</td>
+           <td><a href="/admit1/edit?token=${token}&id=${data.Admits[i]._id}"><span class="material-icons">edit</span></a></td>
            </tr>`) 
         }
         tr = list4.getElementsByTagName("tr");

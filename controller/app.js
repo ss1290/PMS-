@@ -375,6 +375,22 @@ app.get('/signup/staff',Authorization,async(req,res)=>{
         const patient=await Patient.find({})
         res.render('admitedit',{admit,doctor,patient,minDate})
     })
+     app.get('/admit1/edit',Authorization,async(req,res)=>{
+        var dtToday = new Date();
+        var month = dtToday.getMonth() + 1;
+        var day = dtToday.getDate();
+        var year = dtToday.getFullYear();
+        if(month < 10)
+        month = '0' + month.toString();
+        if(day < 10)
+        day = '0' + day.toString();
+        var minDate = year + '-' + month + '-' + day; 
+        const id=req.query.id
+        const admit=await Admit.findById(id)
+        const doctor=await User.find({role:'doctor'})
+        const patient=await Patient.find({})
+        res.render('admit1edit',{admit,doctor,patient,minDate})
+    })
     app.get('/admit/update',Authorization,async(req,res)=>{
         try{
             const patient=await Patient.findOne({name:req.query.name,patientId:req.query.patientId})
@@ -413,7 +429,22 @@ app.get('/signup/staff',Authorization,async(req,res)=>{
         const id=req.query.id
         const discharge=await Discharge.findById(id)
         const admits=await Admit.find({})
-        res.render('dischargedit',{discharge,minDate,admits})
+        res.render('dischargeedit',{discharge,minDate,admits})
+    })
+     app.get('/discharge1/edit',Authorization,async(req,res)=>{
+        var dtToday = new Date();
+        var month = dtToday.getMonth() + 1;
+        var day = dtToday.getDate();
+        var year = dtToday.getFullYear();
+        if(month < 10)
+        month = '0' + month.toString();
+        if(day < 10)
+        day = '0' + day.toString();
+        var minDate = year + '-' + month + '-' + day; 
+        const id=req.query.id
+        const discharge=await Discharge.findById(id)
+        const admits=await Admit.find({})
+        res.render('discharge1edit',{discharge,minDate,admits})
     })
     app.get('/discharge/update',Authorization,async(req,res)=>{
         try{
@@ -498,6 +529,16 @@ app.get('/signup/staff',Authorization,async(req,res)=>{
     app.get('/user/delete',Authorization,async(req,res)=>{
         const id=req.query.id
         await User.findByIdAndDelete(id)
+        res.redirect('back')
+    })
+     app.get('/admit/delete',Authorization,async(req,res)=>{
+        const id=req.query.id
+        await Admit.findByIdAndDelete(id)
+        res.redirect('back')
+    })
+     app.get('/discharge/delete',Authorization,async(req,res)=>{
+        const id=req.query.id
+        await Discharge.findByIdAndDelete(id)
         res.redirect('back')
     })
      app.get('/appointment/delete',Authorization,async(req,res)=>{

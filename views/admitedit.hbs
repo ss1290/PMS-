@@ -7,7 +7,6 @@
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     </head>
-    <body>
         <body>
             <div class="heading1">
                 <h1 class="heading" style="font-size:60px;"><span class="fa fa-plus"
@@ -31,65 +30,63 @@
                 <button class="profile1" onclick="showProfile()"><span><input type=image class="profileimage"
                             src="/img/profile.png"></span>&emsp;Profile</button>
             </div>
-                <form id="admitedit" class="edit">
-                    <label>Patient Name</label>
-                    <select id="patientname">
-                        <option value="{{admit.name}}" selected>{{admit.name}}</option>
-                        {{#each this.patient}}
-                        <option value="{{this.name}}">{{this.name}}</option>
-                        {{/each}}
-                    </select>
-                    <br>
-                    <label>Patient Id</label>
-                    <select id="patientid">
-                        <option value="{{admit.patientId}}" selected>{{admit.patientId}}</option>
-                        {{#each this.patient}}
-                        <option value="{{this.patientId}}">{{this.patientId}}</option>
-                        {{/each}}
-                    </select>
-                    <br>
-                    <label>Doctor Name</label>
-                    <select id="doctorName">
-                        <option value="{{admit.doctor}}" selected>{{admit.doctor}}</option>
-                        {{#each this.doctor}}
-                        <option>{{this.name}}</option>
-                        {{/each}}
-                    </select>
-                    <br>
-                    <label>Department</label>
-                    <select id="department">
-                        <option value="{{admit.department}}" selected>{{admit.department}}</option>
-                        {{#each this.doctor}}
-                        <option>{{this.department}}</option>
-                        {{/each}}
-                    </select>
-                    <br>
-                    <label>Date</label>
-                    <input type="date" id="date" min="{{minDate}}" value="{{admit.date}}" required>
-                    <br>
-                    <label>Select Ward</label>
-                    <select id="ward">
-                        <option value="{{admit.patientWard}}" selected>{{admit.patientWard}}</option>
-                        <option value="Emergency Ward">Emergency Ward</option>
-                        <option value="General Ward">General Ward</option>
-                        <option value="Private Ward">Private Ward</option>
-                    </select>
-                    <br>
-                    <label>Select Bed</label>
-                    <select id="bed">
-                        <option value="{{admit.patientBed}}" selected>{{admit.patientBed}}</option>
-                        <option value="Bed1">Bed1</option>
-                        <option value="Bed2">Bed2</option>
-                        <option value="Bed3">Bed3</option>
-                        <option value="Bed4">Bed4</option>
-                        <option value="Bed5">Bed5</option>
-                    </select>
-                    <br>
-                    <button class="AdmitButton"> submit</button>
-                </form>
-                </div>
-                <p id="message" class="message"></p>
-                </div>
+                <p id="message" class="message1">s</p>
+                        <form id="admitedit" class="edit">
+                            <label>Patient Name</label>
+                            <select id="patientname">
+                                <option value="{{admit.name}}" selected>{{admit.name}}</option>
+                                {{#each this.patient}}
+                                <option value="{{this.name}}">{{this.name}}</option>
+                                {{/each}}
+                            </select>
+                            <br>
+                            <label>Patient Id</label>
+                            <select id="patientid">
+                                <option value="{{admit.patientId}}" selected>{{admit.patientId}}</option>
+                                {{#each this.patient}}
+                                <option value="{{this.patientId}}">{{this.patientId}}</option>
+                                {{/each}}
+                            </select>
+                            <br>
+                            <label>Doctor Name</label>
+                            <select id="doctorName">
+                                <option value="{{admit.doctor}}" selected>{{admit.doctor}}</option>
+                                {{#each this.doctor}}
+                                <option>{{this.name}}</option>
+                                {{/each}}
+                            </select>
+                            <br>
+                            <label>Department</label>
+                            <select id="department">
+                                <option value="{{admit.department}}" selected>{{admit.department}}</option>
+                                {{#each this.doctor}}
+                                <option>{{this.department}}</option>
+                                {{/each}}
+                            </select>
+                            <br>
+                            <label>Date</label>
+                            <input type="date" id="date" min="{{minDate}}" value="{{admit.date}}" required>
+                            <br>
+                            <label>Select Ward</label>
+                            <select id="ward">
+                                <option value="{{admit.patientWard}}" selected>{{admit.patientWard}}</option>
+                                <option value="Emergency Ward">Emergency Ward</option>
+                                <option value="General Ward">General Ward</option>
+                                <option value="Private Ward">Private Ward</option>
+                            </select>
+                            <br>
+                            <label>Select Bed</label>
+                            <select id="bed">
+                                <option value="{{admit.patientBed}}" selected>{{admit.patientBed}}</option>
+                                <option value="Bed1">Bed1</option>
+                                <option value="Bed2">Bed2</option>
+                                <option value="Bed3">Bed3</option>
+                                <option value="Bed4">Bed4</option>
+                                <option value="Bed5">Bed5</option>
+                            </select>
+                            <br>
+                            <button class="AdmitButton"> submit</button>
+                        </form>
                 <script src="https://cdnjs.cloudflare.com/ajax/libs/qs/6.6.0/qs.min.js"></script>
                 <script>
                     var optionValues2 = [];

@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" href="/stylesheet/admin.css">
+    <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+<body>
+    <div class="heading1">
+        <h1 class="heading" style="font-size:60px;"><span class="fa fa-plus"
+                style="font-size:60px;color:rgb(142, 142, 179);border-style:solid;border-radius:100%;padding:10px;border-width:2px;"></span>
+            PMS <button class="logoutButton" onclick="logout()"><span
+                    class="fas fa-power-off"></span>&ensp;Logout</button></h1>
+    </div>
+    <h1 class="heading2" id="heading2">Edit Discharge</h1>
+    <div class="navigationbar">
+        <button class="dashboard1" onclick="dboard1()"><span><input type=image class="dashboardimage"
+                    src="/img/dashboard.png"></span></span>&nbsp;Dashboard</button>
+        <br>
+        <button class="patient1" onclick="showPatient()"><span><input type=image class="patientimage"
+                    src="/img/patient.png"></span>&emsp;Patient</button>
+        <br>
+        <button class="profile1" onclick="showProfile()"><span><input type=image class="profileimage"
+                    src="/img/profile.png"></span>&emsp;Profile</button>
+    </div>
+    <p id="message" class="message1"></p>
+    <form id="dischargeedit" class="edit">
+        <label>Patient Name</label>
+        <select id="PatientName">
+            <option value="{{discharge.name}}" selected>{{discharge.name}}</option>
+            {{#each this.admits}}
+            <option value="{{this.name}}">{{this.name}}</option>
+            {{/each}}
+        </select>
+        <br>
+        <label>Patient Id</label>
+        <select id="Patientid">
+            <option value="{{discharge.patientId}}" selected>{{discharge.patientId}}</option>
+            {{#each this.admits}}
+            <option value="{{this.patientId}}">{{this.patientId}}</option>
+            {{/each}}
+        </select>
+        <br>
+        <label>Doctor Name</label>
+        <select id="doctorname">
+            <option value="{{discharge.doctor}}" selected>{{discharge.doctor}}</option>
+            {{#each this.admits}}
+            <option>{{this.doctor}}</option>
+            {{/each}}
+        </select>
+        <br>
+        <label>Department</label>
+        <select id="Department">
+            <option value="{{discharge.department}}" selected>{{discharge.department}}</option>
+            {{#each this.admits}}
+            <option>{{this.department}}</option>
+            {{/each}}
+        </select>
+        <br>
+        <label>Date</label>
+        <input type="date" id="Date" min="{{minDate}}" required value="{{discharge.date}}">
+        <br>
+        <label>Select Ward</label>
+        <select id="Ward">
+            <option value="{{discharge.patientWard}}" selected>{{discharge.patientWard}}</option>
+            <option value="Emergency Ward">Emergency Ward</option>
+            <option value="General Ward">General Ward</option>
+            <option value="Private Ward">Private Ward</option>
+        </select>
+        <br>
+        <label>Select Bed</label>
+        <select id="Bed">
+            <option value="{{discharge.patientBed}}" selected>{{discharge.patientBed}}</option>
+            <option value="Bed1">Bed1</option>
+            <option value="Bed2">Bed2</option>
+            <option value="Bed3">Bed3</option>
+            <option value="Bed4">Bed4</option>
+            <option value="Bed5">Bed5</option>
+        </select>
+        <br>
+        <label>Bed Days</label>
+        <input type="text" id="days" value="{{discharge.bedDays}}">
+        <br>
+        <label>Enter Charges</label>
+        <input type="text" id="charges" value="{{discharge.charges}}">
+        <br>
+        <button class="AdmitButton"> submit</button>
+    </form>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qs/6.6.0/qs.min.js"></script>
+    <script>
+        var optionValues2 = [];
+        $('#PatientName option').each(function () {
+            if ($.inArray(this.value, optionValues2) > -1) {
+                $(this).remove()
+            } else {
+                optionValues2.push(this.value);
+            }
+        });
+    </script>
+    <script>
+        var optionValues2 = [];
+        $('#Patientid option').each(function () {
+            if ($.inArray(this.value, optionValues2) > -1) {
+                $(this).remove()
+            } else {
+                optionValues2.push(this.value);
+            }
+        });
+    </script>
+    <script>
+        var optionValues2 = [];
+        $('#doctorname option').each(function () {
+            if ($.inArray(this.value, optionValues2) > -1) {
+                $(this).remove()
+            } else {
+                optionValues2.push(this.value);
+            }
+        });
+    </script>
+    <script>
+        var optionValues2 = [];
+        $('#Department option').each(function () {
+            if ($.inArray(this.value, optionValues2) > -1) {
+                $(this).remove()
+            } else {
+                optionValues2.push(this.value);
+            }
+        });
+    </script>
+    <script>
+        var optionValues2 = [];
+        $('#Ward option').each(function () {
+            if ($.inArray(this.value, optionValues2) > -1) {
+                $(this).remove()
+            } else {
+                optionValues2.push(this.value);
+            }
+        });
+    </script>
+    <script>
+        var optionValues2 = [];
+        $('#Bed option').each(function () {
+            if ($.inArray(this.value, optionValues2) > -1) {
+                $(this).remove()
+            } else {
+                optionValues2.push(this.value);
+            }
+        });
+    </script>
+    <script>
+        function dboard1() {
+            var { token } = Qs.parse(location.search, { ignoreQueryPrefix: true })
+            location.href = `/dashboard/staff?&token=${token}`
+        }
+    </script>
+
+    <script>
+        function showPatient() {
+            var { token } = Qs.parse(location.search, { ignoreQueryPrefix: true })
+            location.href = `/staff/patient?&token=${token}&page=${0}`
+        }
+    </script>
+    <script>
+        function showProfile() {
+            var { token } = Qs.parse(location.search, { ignoreQueryPrefix: true })
+            location.href = `/staffprofile?&token=${token}`
+        }
+    </script>
+    <script src="/js/logout.js"></script>
+    <script src="/js/dischargeedit1.js"></script>
+</body>
+
+</html>
